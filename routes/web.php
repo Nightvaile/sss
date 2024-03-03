@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\PageDashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[PageDashboardController::class,'indexDashboard'])->name('indexdashboard');
+
+Route::get('/users',[DashboardController::class,'users'])->name('users');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
