@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PageDashboardController::class,'indexDashboard'])->name('indexdashboard');
+Route::get('/admin',[PageDashboardController::class,'indexDashboard'])->name('indexdashboard');
 
 Route::get('/users',[DashboardController::class,'users'])->name('users');
 
