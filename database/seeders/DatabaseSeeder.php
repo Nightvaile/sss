@@ -20,7 +20,16 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-
+            KategorilerSeeder::class,
+            MarkalarSeeder::class,
+            RenklerSeeder::class,
+            BedenlerSeeder::class,
+            UrunlerSeeder::class,
+            RollerSeeder::class,
+            SeriSeeder::class,
+            SubelerSeeder::class,
+            StokHaraketleriSeeder::class,
+            StoklarSeeder::class,
         ]);
     }
 }
