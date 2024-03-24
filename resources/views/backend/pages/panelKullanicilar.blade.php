@@ -44,17 +44,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @for($i=0; $i<5; $i++)
+                                    @foreach($kullanicilar as $kullanici)
                                         <tr>
-                                            <td>01234567890</td>
-                                            <td>Mehmet Harun</td>
-                                            <td>Kaya</td>
-                                            <td>+905123456789</td>
-                                            <td>harun.1kyq@gmail.com</td>
-                                            <td>Yönetici</td>
-                                            <td>Çanakkale</td>
+                                            <td>{{$kullanici->tc_no ?? 'Gelmedi'}}</td>
+                                            <td>{{$kullanici->name ?? 'Gelmedi'}}</td>
+                                            <td>{{$kullanici->surname ?? 'Gelmedi'}}</td>
+                                            <td>+{{$kullanici->tel_no ?? 'Gelmedi'}}</td>
+                                            <td>{{$kullanici->email ?? 'Gelmedi'}}</td>
+                                            <td>{{$kullanici->rol_id ?? 'Gelmedi'}}</td>
+                                            <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
                                         </tr>
-                                    @endfor
+                                    @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
