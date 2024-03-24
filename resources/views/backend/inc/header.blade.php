@@ -2,7 +2,7 @@
         Nav header start
     ***********************************-->
 <div class="nav-header">
-    <a href="{{route('indexdashboard')}}" class="brand-logo">
+    <a href="{{route('pIndex')}}" class="brand-logo">
         <img class="logo-abbr" src="{{asset('backend/images/logo.png')}}" alt="">
         <img class="logo-compact" src="{{asset('backend/images/logo-text.png')}}" alt="">
         <img class="brand-title" src="{{asset('backend/images/logo-text.png')}}" alt="">
@@ -26,16 +26,16 @@
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
-                    <div class="search_bar dropdown">
+                    {{--<div class="search_bar dropdown">
                                 <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
                                     <i class="mdi mdi-magnify"></i>
                                 </span>
                         <div class="dropdown-menu p-0 m-0">
                             <form>
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control" type="search" placeholder="Ara" aria-label="Search">
                             </form>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
 
                 <ul class="navbar-nav header-right">
@@ -104,7 +104,7 @@
                             <i class="mdi mdi-account"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="{{asset('backend/app-profile.html" class="dropdown-item')}}">
+                            <a href="{{asset('backend/app-profile.html')}}" class="dropdown-item">
                                 <i class="icon-user"></i>
                                 <span class="ml-2">Profile </span>
                             </a>

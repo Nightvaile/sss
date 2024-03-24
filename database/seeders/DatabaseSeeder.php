@@ -24,12 +24,13 @@ class DatabaseSeeder extends Seeder
             MarkalarSeeder::class,
             RenklerSeeder::class,
             BedenlerSeeder::class,
-            UrunlerSeeder::class,
             RollerSeeder::class,
             SeriSeeder::class,
+            UserSeeder::class,
             SubelerSeeder::class,
-            StokHaraketleriSeeder::class,
+            UrunlerSeeder::class,
             StoklarSeeder::class,
+            StokHaraketleriSeeder::class,
         ]);
     }
 }

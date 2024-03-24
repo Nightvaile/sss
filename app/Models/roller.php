@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class roller extends Model
 {
     use HasFactory;
+    protected $table = 'roller';
+    protected $fillable = [
+        'rol_adi',
+    ];
 }

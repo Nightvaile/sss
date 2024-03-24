@@ -15,12 +15,12 @@ return new class extends Migration {
             $table->string('tc_no', 11)->unique()->nullable();
             $table->string('name');
             $table->string('surname')->nullable();
+            $table->string('tel_no', 10)->nullable();
+            $table->string('address')->nullable();
+            $table->unsignedBigInteger('rol_id')->default('1');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('address')->nullable();
-            $table->string('tel_no',);
-            $table->unsignedBigInteger('rol_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->enum('haraket_tipi', ['Transfer', 'Alış', 'Satış', 'İade', 'Değişim'])->default('Transfer');
             $table->integer('stok_adeti');
             $table->decimal('birim_fiyat', 10, 2)->nullable();
-            $table->decimal('totalfiyat', 20, 2)->nullable();
+            $table->decimal('total_fiyat', 20, 2)->nullable();
             $table->timestamps();
 
             $table->foreign('barkod_no')->references('barkod_NO')->on('urunler')

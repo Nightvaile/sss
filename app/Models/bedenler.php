@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class bedenler extends Model
 {
     use HasFactory;
+
+    protected $table = 'bedenler';
+    protected $fillable = [
+        'beden_adi',
+    ];
 }

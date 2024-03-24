@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class subeler extends Model
 {
     use HasFactory;
+    protected $table = 'subeler';
+    protected $fillable = [
+        'barkod_no',
+        'sube_id',
+        'stok_sayisi',
+    ];
 }

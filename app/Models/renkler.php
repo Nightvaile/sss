@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class renkler extends Model
 {
     use HasFactory;
+    protected $table = 'renkler';
+    protected $fillable = [
+        'renk_adi',
+    ];
 }

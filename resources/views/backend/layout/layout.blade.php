@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('backend/vendor/owl-carousel/css/owl.theme.default.min.css')}}">
     <link href="{{asset('backend/vendor/jqvmap/css/jqvmap.min.css')}}" rel="stylesheet">
     <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
-
+    @yield('head_in')
 
 
 </head>
@@ -42,9 +42,13 @@
     @include('backend.inc.header')
 
     @include('backend.inc.sidebar')
-
+    <!--**********************************
+            Content body start
+        ***********************************-->
     @yield('content')
-
+    <!--**********************************
+            Content body end
+        ***********************************-->
     @include('backend.inc.footer')
 
     <!--**********************************
@@ -94,6 +98,8 @@
 
 
 <script src="{{asset('backend/js/dashboard/dashboard-1.js')}}"></script>
+
+@yield('scripts')
 
 </body>
 
