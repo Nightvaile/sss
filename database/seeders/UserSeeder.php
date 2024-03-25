@@ -40,7 +40,6 @@ class UserSeeder extends Seeder
                 'surname' => 'Göçen',
                 'tel_no' => '5333333333',
                 'address' => 'Çanakkale',
-                'rol_id' => '1',
                 'email' => 'menesg@gmail.com',
                 'password' => '17234568',
             ],

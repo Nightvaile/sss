@@ -9,11 +9,12 @@ class roller extends Model
 {
     use HasFactory;
     protected $table = 'roller';
+    protected $primaryKey = 'rol_ID';//Tanımlarken gelen temel şeyleri dğeiştirdiğinde tanıtman gerekiyor.
     protected $fillable = [
         'rol_adi',
     ];
-    public function user()
+    public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'rol_id');
     }
 }

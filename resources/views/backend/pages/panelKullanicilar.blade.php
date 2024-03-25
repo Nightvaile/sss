@@ -49,9 +49,9 @@
                                             <td>{{$kullanici->tc_no ?? 'Gelmedi'}}</td>
                                             <td>{{$kullanici->name ?? 'Gelmedi'}}</td>
                                             <td>{{$kullanici->surname ?? 'Gelmedi'}}</td>
-                                            <td>+{{$kullanici->tel_no ?? 'Gelmedi'}}</td>
+                                            <td>{{$kullanici->tel_no ?? 'Gelmedi'}}</td>
                                             <td>{{$kullanici->email ?? 'Gelmedi'}}</td>
-                                            <td>{{$kullanici->rol_id ?? 'Gelmedi'}}</td>
+                                            <td>{{$kullanici->rol->rol_adi ?? 'Gelmedi'}}</td>
                                             <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
                                         </tr>
                                     @endforeach

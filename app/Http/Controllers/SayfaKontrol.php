@@ -15,7 +15,6 @@ class SayfaKontrol extends Controller
 
     public function pKullanicilar()
     {
-
         $kullanicilar = User::all();
 //        return dd($kullanicilar);
         return view('backend.pages.panelKullanicilar',compact('kullanicilar'));

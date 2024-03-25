@@ -24,7 +24,8 @@ class User extends Authenticatable
         'tc_no',
         'surname',
         'address',
-        'rol_id',
+        'rol_name',
+        'tel_no'
     ];
 
     /**
@@ -48,6 +49,6 @@ class User extends Authenticatable
     ];
     public function rol()
     {
-        return $this->belongsTo(roller::class);
+        return $this->belongsTo(roller::class, 'rol_id');
     }
 }
