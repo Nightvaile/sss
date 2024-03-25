@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxKontrol;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SayfaKontrol;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ Route::get('/kullanicilar',[SayfaKontrol::class,'pKullanicilar'])->name('pKullan
 
 /*------------------------Formlar---------------------------*/
 Route::get('/kullanici-ekle',[SayfaKontrol::class,'fEkleKullanici'])->name('fEkleKullanici');
+Route::post('/kullanici-ekle',[AjaxKontrol::class,'EkleKullanici'])->name('EkleKullanici');
+
 
 Route::get('/kategori-ekle',[SayfaKontrol::class,'fEkleKategori'])->name('fEkleKategori');
 
