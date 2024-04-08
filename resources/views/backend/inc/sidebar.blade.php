@@ -17,7 +17,7 @@
                 <ul aria-expanded="false">
                     <li><a href="{{route('fEkleKullanici')}}">Kullanıcı Ekleme Formu</a></li>
                     <li><a href="{{route('fEkleKategori')}}">Kategori Ekleme Formu</a></li>
-                    <li><a href="{{route('fEkleSecenek')}}">Şeçenek Ekleme Formu</a></li>
+                    <li><a href="{{route('fEkleSecenek')}}">Seçenek Ekleme Formu</a></li>
                     <li><a href="{{route('fEkleSube')}}">Şube Ekleme Formu</a></li>
                     <li><a href="{{route('fEkleUrun')}}">Ürün Ekleme Formu</a></li>
                     <li><a href="{{route('fEkleRol')}}">Rol Ekleme Formu</a></li>

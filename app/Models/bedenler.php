@@ -10,6 +10,7 @@ class bedenler extends Model
     use HasFactory;
 
     protected $table = 'bedenler';
+    protected $primaryKey = 'beden_ID';
     protected $fillable = [
         'beden_adi',
     ];

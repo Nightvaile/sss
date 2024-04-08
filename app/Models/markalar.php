@@ -10,6 +10,7 @@ class markalar extends Model
     use HasFactory;
 
     protected $table = 'markalar';
+    protected $primaryKey = 'marka_ID';
     protected $fillable = [
         'marka_adi',
     ];

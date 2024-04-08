@@ -9,6 +9,7 @@ class seriler extends Model
 {
     use HasFactory;
     protected $table = 'seriler';
+    protected $primaryKey = 'seri_ID';
     protected $fillable = [
         'seri_adi',
     ];

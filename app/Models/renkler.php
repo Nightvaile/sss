@@ -9,6 +9,7 @@ class renkler extends Model
 {
     use HasFactory;
     protected $table = 'renkler';
+    protected $primaryKey = 'renk_ID';
     protected $fillable = [
         'renk_adi',
     ];

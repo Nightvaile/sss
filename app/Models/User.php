@@ -28,6 +28,11 @@ class User extends Authenticatable
         'tel_no'
     ];
 
+    public function rol()
+    {
+        return $this->belongsTo(roller::class, 'rol_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -37,7 +42,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
     /**
      * The attributes that should be cast.
      *
@@ -47,8 +51,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function rol()
-    {
-        return $this->belongsTo(roller::class, 'rol_id');
-    }
 }

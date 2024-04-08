@@ -26,6 +26,7 @@ Route::post('/kullanici-ekle',[AjaxKontrol::class,'EkleKullanici'])->name('EkleK
 
 
 Route::get('/kategori-ekle',[SayfaKontrol::class,'fEkleKategori'])->name('fEkleKategori');
+Route::post('/kategori-ekle',[AjaxKontrol::class,'EkleKategori'])->name('EkleKategori');
 
 Route::get('/sube-ekle',[SayfaKontrol::class,'fEkleSube'])->name('fEkleSube');
 

@@ -13,16 +13,7 @@
 @section('content')
     <div class="content-body">
         <div class="container-fluid">
-            <div class="row page-titles mx-0">
-                <div class="col-sm-6 p-md-0">
-                    <div class="welcome-text">
-                        <h4>Merhaba, (isim) Hoşgeldiniz!</h4>
-                    </div>
-                </div>
-            </div>
             <!-- row -->
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -41,6 +32,7 @@
                                         <th>E-posta</th>
                                         <th>Pozisyon</th>
                                         <th>Adres</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -53,6 +45,7 @@
                                             <td>{{$kullanici->email ?? 'Gelmedi'}}</td>
                                             <td>{{$kullanici->rol->rol_adi ?? 'Gelmedi'}}</td>
                                             <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
+                                            <td></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -65,6 +58,7 @@
                                         <th>E-posta</th>
                                         <th>Pozisyon</th>
                                         <th>Adres</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                     </tfoot>
                                 </table>

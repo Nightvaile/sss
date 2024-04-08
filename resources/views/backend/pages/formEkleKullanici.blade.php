@@ -8,13 +8,6 @@
 @section('content')
     <div class="content-body">
         <div class="container-fluid">
-            <div class="row page-titles mx-0">
-                <div class="col-sm-6 p-md-0">
-                    <div class="welcome-text">
-                        <h4>Hi, (isim) welcome back!</h4>
-                    </div>
-                </div>
-            </div>
             <!-- row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -75,8 +68,9 @@
                                                 </label>
                                                 <div class="col-lg-6">
                                                     <select class="form-control" id="val-skill" name="rol_id">
-                                                        <option value="1">Personel</option>
-
+                                                        @foreach($roller as $rol)
+                                                            <option value="{{$rol->rol_ID ?? '1'}}}">{{$rol->rol_adi ?? 'Personel'}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>

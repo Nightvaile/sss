@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\kategoriler;
 use App\Models\roller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class SayfaKontrol extends Controller
 
     public function pKullanicilar()
     {
-        $kullanicilar = User::all();
+        $kullanicilar = User::with('rol')->get();//with models da kullanılan fonksiyon adı
+
 //        return dd($kullanicilar);
         return view('backend.pages.panelKullanicilar',compact('kullanicilar'));
     }
@@ -23,12 +25,14 @@ class SayfaKontrol extends Controller
     /*--------------------------Formlar---------------------------*/
     public function fEkleKullanici()
     {
-        return view('backend.pages.formEkleKullanici');
+        $roller = roller::all();
+        return view('backend.pages.formEkleKullanici',compact('roller'));
     }
 
     public function fEkleKategori()
     {
-        return view('backend.pages.formEkleKategori');
+        $kategoriler = kategoriler::all();
+        return view('backend.pages.formEkleKategori',compact('kategoriler'));
 
     }
 

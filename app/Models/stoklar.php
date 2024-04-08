@@ -9,6 +9,7 @@ class stoklar extends Model
 {
     use HasFactory;
     protected $table = 'stoklar';
+    protected $primaryKey = 'stok_ID';
     protected $fillable = [
         'barkod_no',
         'sube_id',

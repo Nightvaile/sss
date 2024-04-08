@@ -9,6 +9,7 @@ class urunler extends Model
 {
     use HasFactory;
     protected $table = 'urunler';
+    protected $primaryKey = 'barcode_NO';
     protected $fillable = [
         'urun_adi',
         'aciklama',

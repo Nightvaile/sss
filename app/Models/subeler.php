@@ -9,6 +9,7 @@ class subeler extends Model
 {
     use HasFactory;
     protected $table = 'subeler';
+    protected $primaryKey = 'sube_ID';
     protected $fillable = [
         'barkod_no',
         'sube_id',

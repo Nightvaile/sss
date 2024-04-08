@@ -26,6 +26,14 @@
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
+                    <div class="row page-titles mx-0 mt-4">
+                        <div class="col-sm-12 p-md-2">
+                            <div class="welcome-text">
+                                <h4>Merhaba,(isim) Hoşgeldiniz!</h4>
+                            </div>
+                        </div>
+                    </div>
+
                     {{--<div class="search_bar dropdown">
                                 <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
                                     <i class="mdi mdi-magnify"></i>
