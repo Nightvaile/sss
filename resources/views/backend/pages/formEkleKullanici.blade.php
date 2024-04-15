@@ -68,9 +68,11 @@
                                                 </label>
                                                 <div class="col-lg-6">
                                                     <select class="form-control" id="val-skill" name="rol_id">
-                                                        @foreach($roller as $rol)
-                                                            <option value="{{$rol->rol_ID ?? '1'}}}">{{$rol->rol_adi ?? 'Personel'}}</option>
-                                                        @endforeach
+                                                        @if(!empty($roller) && count($roller)>0)
+                                                            @foreach($roller as $rol)
+                                                                <option value="{{$rol->rol_ID ?? '1'}}}">{{$rol->rol_adi ?? 'Personel'}}</option>
+                                                            @endforeach
+                                                        @endif
                                                     </select>
                                                 </div>
                                             </div>

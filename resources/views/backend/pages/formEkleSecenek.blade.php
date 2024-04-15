@@ -1,7 +1,10 @@
 @extends('backend.layout.layout')
-@section('title')Kullanıcı Ekle @endsection
+@section('title')
+    Kullanıcı Ekle
+@endsection
 @section('head_in')
-
+    <!-- Nestable -->
+    <link href="{{asset('backend')}}/vendor/nestable2/css/jquery.nestable.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="content-body">
@@ -11,146 +14,113 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Form Validation</h4>
+                            <h4 class="card-title">Kategoriler</h4>
                         </div>
                         <div class="card-body">
+
                             <div class="form-validation">
-                                <form class="form-valide" action="#" method="post">
-                                    <div class="row">
-                                        <div class="col-xl-6">
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Username
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
-                                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Kategori Ekle</h4>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-email">Email <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-email" name="val-email" placeholder="Your valid email..">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-password">Password
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="password" class="form-control" id="val-password" name="val-password" placeholder="Choose a safe one..">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-confirm-password">Confirm Password <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="password" class="form-control" id="val-confirm-password" name="val-confirm-password" placeholder="..and confirm it!">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-suggestions">Suggestions <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="5" placeholder="What would you like to see?"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-skill">Best Skill
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <select class="form-control" id="val-skill" name="val-skill">
-                                                        <option value="">Please select</option>
-                                                        <option value="html">HTML</option>
-                                                        <option value="css">CSS</option>
-                                                        <option value="javascript">JavaScript</option>
-                                                        <option value="angular">Angular</option>
-                                                        <option value="angular">React</option>
-                                                        <option value="vuejs">Vue.js</option>
-                                                        <option value="ruby">Ruby</option>
-                                                        <option value="php">PHP</option>
-                                                        <option value="asp">ASP.NET</option>
-                                                        <option value="python">Python</option>
-                                                        <option value="mysql">MySQL</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-currency">Currency
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-currency" name="val-currency" placeholder="$21.60">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-website">Website
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-website" name="val-website" placeholder="http://example.com">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-phoneus">Phone (US)
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-phoneus" name="val-phoneus" placeholder="212-999-0000">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-digits">Digits <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-digits" name="val-digits" placeholder="5">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-number">Number <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-number" name="val-number" placeholder="5.0">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-range">Range [1, 5]
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-range" name="val-range" placeholder="4">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label"><a
-                                                        href="javascript:void(0)">Terms &amp; Conditions</a> <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-8">
-                                                    <label class="css-control css-control-primary css-checkbox" for="val-terms">
-                                                        <input type="checkbox" class="css-control-input mr-2"
-                                                               id="val-terms" name="val-terms" value="1">
-                                                        <span class="css-control-indicator"></span> I agree to the
-                                                        terms</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-8 ml-auto">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{--Kategori ekleme--}}
+                                                    <div class="col-md-12">
+                                                        <div class="col-xl-12">
+                                                            @if(session('success'))
+                                                                <div
+                                                                    class="alert alert-success">{{session('success')}}</div>
+                                                            @elseif(session('fail'))
+                                                                <div
+                                                                    class="alert alert-danger">{{session('fail')}}</div>
+                                                            @endif
+                                                            <form class="form-valide" action="{{--{{route('EkleSecenek')}}--}}"
+                                                                  method="post">
+                                                                @csrf
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-6 col-form-label"
+                                                                           for="val-username">Seçenek
+                                                                        <span class="text-danger">*</span>
+                                                                    </label>
+                                                                    <div class="col-lg-6">
+                                                                        <input type="text" class="form-control"
+                                                                               id="val-username" name="secenek_adi"
+                                                                               placeholder="Seçenek giriniz.">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col-lg-6 ml-auto">
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                            Kaydet
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    {{--Kategori gösterme--}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="col-lg-8">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Kategori Listesi</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Kategori Adı</th>
+                                                            <th scope="col">Üst Kategorsi</th>
+                                                            <th scope="col">İşlemler</th>
+                                                            {{--<th scope="col">Label</th>
+                                                            <th scope="col">Action</th>--}}
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>Air Conditioner</td>
+                                                            {{--<td>
+                                                                <div class="progress" style="background: rgba(127, 99, 244, .1)">
+                                                                    <div class="progress-bar bg-primary" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>Apr 20,2018</td>--}}
+                                                            <td><span class="badge badge-primary">70%</span>
+                                                            </td>
+                                                            <td><span><a href="javascript:void()" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Textiles</td>
+                                                            {{--<td>
+                                                                <div class="progress" style="background: rgba(76, 175, 80, .1)">
+                                                                    <div class="progress-bar bg-success" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>May 27,2018</td>--}}
+                                                            <td><span class="badge badge-success">70%</span>
+                                                            </td>
+                                                            <td><span><a href="javascript:void()" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -163,5 +133,9 @@
     <script src="{{asset('backend/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <!-- Form validate init -->
     <script src="{{asset('backend/js/plugins-init/jquery.validate-init.js')}}"></script>
+    <!-- Nestable -->
+    <script src="{{asset('backend')}}/vendor/nestable2/js/jquery.nestable.min.js"></script>
+    <!-- All init script -->
+    <script src="{{asset('backend')}}/js/plugins-init/nestable-init.js"></script>
 @endsection
 

@@ -36,18 +36,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($kullanicilar as $kullanici)
-                                        <tr>
-                                            <td>{{$kullanici->tc_no ?? 'Gelmedi'}}</td>
-                                            <td>{{$kullanici->name ?? 'Gelmedi'}}</td>
-                                            <td>{{$kullanici->surname ?? 'Gelmedi'}}</td>
-                                            <td>{{$kullanici->tel_no ?? 'Gelmedi'}}</td>
-                                            <td>{{$kullanici->email ?? 'Gelmedi'}}</td>
-                                            <td>{{$kullanici->rol->rol_adi ?? 'Gelmedi'}}</td>
-                                            <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
-                                            <td></td>
-                                        </tr>
-                                    @endforeach
+                                    @if(!empty($kullanicilar) && count($kullanicilar)>0)
+                                        @foreach($kullanicilar as $kullanici)
+                                            <tr>
+                                                <td>{{$kullanici->tc_no ?? 'Gelmedi'}}</td>
+                                                <td>{{$kullanici->name ?? 'Gelmedi'}}</td>
+                                                <td>{{$kullanici->surname ?? 'Gelmedi'}}</td>
+                                                <td>{{$kullanici->tel_no ?? 'Gelmedi'}}</td>
+                                                <td>{{$kullanici->email ?? 'Gelmedi'}}</td>
+                                                <td>{{$kullanici->rol->rol_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
+                                                <td>
+                                                    <span><a href="javascript:void()" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                     <tfoot>
                                     <tr>

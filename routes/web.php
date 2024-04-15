@@ -34,7 +34,9 @@ Route::get('/rol-ekle',[SayfaKontrol::class,'fEkleRol'])->name('fEkleRol');
 
 Route::get('/urun-ekle',[SayfaKontrol::class,'fEkleUrun'])->name('fEkleUrun');
 
-Route::get('/secenek-ekle',[SayfaKontrol::class,'fEkleSecenek'])->name('fEkleSecenek');
+Route::get('/beden-ekle',[SayfaKontrol::class,'fEkleBeden'])->name('fEkleBeden');
+Route::post('/beden-ekle',[AjaxKontrol::class,'EkleBeden'])->name('EkleBeden');
+
 
 /*-------------------------Auth--------------------------*/
 Route::get('/dashboard', function () {

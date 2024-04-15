@@ -53,7 +53,7 @@ class SayfaKontrol extends Controller
         return view('backend.pages.formEkleUrun');
     }
 
-    public function fEkleSecenek()
+    public function fEkleBeden()
     {
         return view('backend.pages.formEkleSecenek');
     }

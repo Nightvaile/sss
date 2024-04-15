@@ -26,4 +26,9 @@ class AjaxKontrol extends Controller
         kategoriler::create($kategori);
         return back()->withSuccess('Başarıyla kaydedildi.');
     }
+    public function EkleBeden(Request $request)
+    {
+        $beden = $request->all();
+
+    }
 }
