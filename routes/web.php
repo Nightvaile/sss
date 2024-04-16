@@ -24,15 +24,17 @@ Route::get('/kullanicilar',[SayfaKontrol::class,'pKullanicilar'])->name('pKullan
 Route::get('/kullanici-ekle',[SayfaKontrol::class,'fEkleKullanici'])->name('fEkleKullanici');
 Route::post('/kullanici-ekle',[AjaxKontrol::class,'EkleKullanici'])->name('EkleKullanici');
 
+Route::get('/urun-ekle',[SayfaKontrol::class,'fEkleUrun'])->name('fEkleUrun');
 
 Route::get('/kategori-ekle',[SayfaKontrol::class,'fEkleKategori'])->name('fEkleKategori');
 Route::post('/kategori-ekle',[AjaxKontrol::class,'EkleKategori'])->name('EkleKategori');
 
 Route::get('/sube-ekle',[SayfaKontrol::class,'fEkleSube'])->name('fEkleSube');
+Route::post('/sube-ekle',[AjaxKontrol::class,'EkleSube'])->name('EkleSube');
 
 Route::get('/rol-ekle',[SayfaKontrol::class,'fEkleRol'])->name('fEkleRol');
+Route::post('/rol-ekle',[AjaxKontrol::class,'EkleRol'])->name('EkleRol');
 
-Route::get('/urun-ekle',[SayfaKontrol::class,'fEkleUrun'])->name('fEkleUrun');
 
 Route::get('/beden-ekle',[SayfaKontrol::class,'fEkleBeden'])->name('fEkleBeden');
 Route::post('/beden-ekle',[AjaxKontrol::class,'EkleBeden'])->name('EkleBeden');

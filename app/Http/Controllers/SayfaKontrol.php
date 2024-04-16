@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\bedenler;
 use App\Models\kategoriler;
 use App\Models\roller;
+use App\Models\urunler;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,36 +27,37 @@ class SayfaKontrol extends Controller
     /*--------------------------Formlar---------------------------*/
     public function fEkleKullanici()
     {
+        $Users = User::all();
         $roller = roller::all();
-        return view('backend.pages.formEkleKullanici',compact('roller'));
+        return view('backend.pages.formEkleKullanici',compact('Users','roller'));
     }
 
     public function fEkleKategori()
     {
-        $kategoriler = kategoriler::all();
+        $kategoriler = kategoriler::with('ustKategori')->get();
         return view('backend.pages.formEkleKategori',compact('kategoriler'));
-
     }
 
     public function fEkleSube()
     {
         return view('backend.pages.formEkleSube');
-
     }
 
     public function fEkleRol()
     {
-        return view('backend.pages.formEkleRol');
-
+        $roller = roller::all();
+        return view('backend.pages.formEkleRol',compact('roller'));
     }
 
     public function fEkleUrun()
     {
-        return view('backend.pages.formEkleUrun');
+        $urunler = urunler::all();
+        return view('backend.pages.formEkleUrun',compact('urunler'));
     }
 
     public function fEkleBeden()
     {
-        return view('backend.pages.formEkleSecenek');
+        $bedenler = bedenler::all();
+        return view('backend.pages.formEkleSecenek',compact('bedenler'));
     }
 }

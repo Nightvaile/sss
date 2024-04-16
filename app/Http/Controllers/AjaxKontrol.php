@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bedenler;
 use App\Models\kategoriler;
+use App\Models\roller;
+use App\Models\subeler;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,9 +29,34 @@ class AjaxKontrol extends Controller
         kategoriler::create($kategori);
         return back()->withSuccess('Başarıyla kaydedildi.');
     }
+
     public function EkleBeden(Request $request)
     {
         $beden = $request->all();
+        if ($beden['beden_adi'] === null) {
+            return back()->withFail('Kaydedilemedi. Beden adı giriniz.');
+        }
+        bedenler::create($beden);
+        return back()->withSuccess('Başarıyla kaydedildi.');
+    }
 
+    public function EkleRol(Request $request)
+    {
+        $rol = $request->all();
+        if ($rol['rol_adi'] === null) {
+            return back()->withFail('Kaydedilemedi. Rol adı giriniz.');
+        }
+        roller::create($rol);
+        return back()->withSuccess('Başarıyla kaydedildi.');
+    }
+
+    public function EkleSube(Request $request)
+    {
+        $sube = $request->all();
+        if ($sube['sube_adi'] === null) {
+            return back()->withFail('Kaydedilemedi. Şube adı giriniz.');
+        }
+        subeler::create($sube);
+        return back()->withSuccess('Başarıyla kaydedildi.');
     }
 }

@@ -14,4 +14,8 @@ class kategoriler extends Model
         'kategori_adi',
         'ust_kategori',
     ];
+    public function ustKategori()
+    {
+        return $this->belongsTo(kategoriler::class, 'ust_kategori', 'kategori_ID');
+    }
 }

@@ -8,11 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class subeler extends Model
 {
     use HasFactory;
+
     protected $table = 'subeler';
     protected $primaryKey = 'sube_ID';
     protected $fillable = [
-        'barkod_no',
-        'sube_id',
-        'stok_sayisi',
+        'sube_adi',
+        'adres',
+        'yetkili_kisi',
+        'sube_tel'
     ];
+
+    public function kullanicisi()
+    {
+        return $this->hasOne(User::class, 'yetkili_kisi', 'id');
+    }
 }
