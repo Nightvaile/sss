@@ -22,12 +22,11 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title">Kategori Ekle</h4>
+                                                <h4 class="card-title">Kategori Düzenle</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
-
-                                                    {{--Kategori ekleme--}}
+                                                    {{--Kategori Duzenleme--}}
                                                     <div class="col-md-12">
                                                         <div class="col-md-12">
                                                             @if(session('success'))
@@ -37,7 +36,7 @@
                                                                 <div
                                                                     class="alert alert-danger">{{session('fail')}}</div>
                                                             @endif
-                                                            <form class="form-valide" action="{{route('EkleKategori')}}"
+                                                            <form class="form-valide" action="{{route('DuzenleKategori',$veri->kategori_ID)}}"
                                                                   method="post">
                                                                 @csrf
                                                                 <div class="form-group row">
@@ -48,9 +47,28 @@
                                                                     <div class="col-lg-6">
                                                                         <input type="text" class="form-control"
                                                                                id="val-username" name="kategori_adi"
-                                                                               placeholder="Kategori giriniz.">
+                                                                               placeholder="Kategori giriniz." value="{{$veri->kategori_adi}}">
                                                                     </div>
                                                                 </div>
+                                                                {{--<div class="form-group row">
+                                                                    <label class="col-lg-4 col-form-label"
+                                                                           for="val-skill">Üst Kategori
+                                                                    </label>
+                                                                    <div class="col-lg-6">
+                                                                        <select class="form-control" id="val-skill"
+                                                                                name="ust_kategori" data-value="{{$veri->ust_kategori}}">
+                                                                            <option value="">Üst kategori varsa
+                                                                                seçiniz.
+                                                                            </option>
+                                                                            @if(!empty($kategoriler) && count($kategoriler)>0)
+                                                                                @foreach($kategoriler as $kategori)
+                                                                                    <option
+                                                                                        value="{{$kategori->kategori_ID ?? 'gelmedi'}}">{{$kategori->kategori_adi ?? 'gelmedi'}}</option>
+                                                                                @endforeach
+                                                                            @endif
+                                                                        </select>
+                                                                    </div>
+                                                                </div>--}}
                                                                 <div class="form-group row">
                                                                     <label class="col-lg-4 col-form-label"
                                                                            for="val-skill">Üst Kategori
@@ -63,13 +81,18 @@
                                                                             </option>
                                                                             @if(!empty($kategoriler) && count($kategoriler)>0)
                                                                                 @foreach($kategoriler as $kategori)
-                                                                                    <option
-                                                                                        value="{{$kategori->kategori_ID ?? 'gelmedi'}}">{{$kategori->kategori_adi ?? 'gelmedi'}}</option>
+                                                                                    @if(!($kategori->kategori_ID == $veri->kategori_ID))
+                                                                                        <option value="{{$kategori->kategori_ID}}"
+                                                                                                @if($kategori->kategori_ID == $veri->ust_kategori) selected @endif>
+                                                                                            {{$kategori->kategori_adi}}
+                                                                                        </option>
+                                                                                    @endif
                                                                                 @endforeach
                                                                             @endif
                                                                         </select>
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="form-group row">
                                                                     <div class="col-lg-8 ml-auto">
                                                                         <button type="submit" class="btn btn-primary">
@@ -80,34 +103,6 @@
                                                             </form>
                                                         </div>
                                                     </div>
-                                                    {{--Kategori gösterme--}}
-                                                    {{--<div class="col-md-6">
-                                                        <div class="card-content">
-                                                            <div class="nestable">
-                                                                <div class="dd" id="nestable">
-                                                                    <ol class="dd-list">
-                                                                        @if(!empty($kategoriler) && count($kategoriler)>0)
-                                                                            @foreach($kategoriler as $kategori)
-                                                                                @if($kategori->ust_kategori === null)
-                                                                                    <li class="dd-item"
-                                                                                        data-id="{{$kategori->kategori_ID}}">
-                                                                                        <div class="row">
-                                                                                            <div class="col-md-7">
-                                                                                                <div class="dd-handle"> {{$kategori->kategori_adi}} </div>
-                                                                                            </div>
-                                                                                            <div class="col-md-2 mr-2"><button class="btn btn-primary">Düzenle</button></div>
-                                                                                            <div class="col-md-2"><button class="btn btn-danger">Sil</button></div>
-                                                                                        </div>
-                                                                                        @include('backend.inc.altKategori', ['altKategoriler' => $kategoriler, 'ustKategoriID' => $kategori->kategori_ID])
-                                                                                    </li>
-                                                                                @endif
-                                                                            @endforeach
-                                                                        @endif
-                                                                    </ol>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -116,6 +111,7 @@
                             </div>
                             </form>
                         </div>
+{{--
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
@@ -140,19 +136,15 @@
                                                         <td>{{$kategori->kategori_adi}}</td>
                                                         <td>@if($kategori->ust_kategori)
                                                                 {{$kategori->ustKategori->kategori_adi}}
-                                                                {{--@dd($kategori)--}}{{--Burda kullandığımız classın adıyla bağlı olduğu veriyi çektik--}}
+                                                                --}}
+{{--@dd($kategori)--}}{{--
+--}}
+{{--Burda kullandığımız classın adıyla bağlı olduğu veriyi çektik--}}{{--
+
                                                             @else
                                                                 Yok
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            <span><a href="{{route('fDuzenleKategori',$kategori->kategori_ID)}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                    <i class="fa fa-pencil color-muted"></i>
-                                                                </a>
-                                                                <a href="{{route('SilKategori',$kategori->kategori_ID)}}" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                    <i class="fa fa-close color-danger"></i>
-                                                                </a>
-                                                            </span>
+                                                            @endif</td>
+                                                        <td><span><a href="javascript:void()" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -163,6 +155,7 @@
                                 </div>
                             </div>
                         </div>
+--}}
                     </div>
 
                 </div>

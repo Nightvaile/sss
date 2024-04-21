@@ -36,6 +36,30 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                        <td class="py-0">
+                                            <img style="max-width: 50px; max-height: 50px;" src="https://demo.themefisher.com/mono-bootstrap/images/products/products-xs-01.jpg" alt="Product Image">
+                                        </td>
+                                        <td>27</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>18</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                                   aria-haspopup="true" aria-expanded="false">
+                                                </a>
+
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Action</a>
+                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     @if(!empty($kullanicilar) && count($kullanicilar)>0)
                                         @foreach($kullanicilar as $kullanici)
                                             <tr>
@@ -47,7 +71,8 @@
                                                 <td>{{$kullanici->rol->rol_adi ?? 'Gelmedi'}}</td>
                                                 <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
                                                 <td>
-                                                    <span><a href="javascript:void()" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span></td>
+                                                    <span><a href="#" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
+                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
                                             </tr>
                                         @endforeach
                                     @endif

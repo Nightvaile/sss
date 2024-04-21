@@ -18,8 +18,8 @@ class subeler extends Model
         'sube_tel'
     ];
 
-    public function kullanicisi()
+    public function yetkili()
     {
-        return $this->hasOne(User::class, 'yetkili_kisi', 'id');
+        return $this->hasOne(User::class, 'id', 'yetkili_kisi');
     }
 }

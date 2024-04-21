@@ -1,6 +1,6 @@
 @extends('backend.layout.layout')
 @section('title')
-    Kategori Ekle
+    Şube Ekle
 @endsection
 @section('head_in')
     <!-- Nestable -->
@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Kategoriler</h4>
+                            <h4 class="card-title">Şubeler</h4>
                         </div>
                         <div class="card-body">
 
@@ -23,12 +23,12 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title">Kategori Ekle</h4>
+                                                <h4 class="card-title">Şube Ekle</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
 
-                                                    {{--Kategori ekleme--}}
+                                                    {{--sube ekleme--}}
                                                     <div class="col-md-12">
                                                         <div class="col-md-12">
                                                             @if(session('success'))
@@ -38,77 +38,79 @@
                                                                 <div
                                                                     class="alert alert-danger">{{session('fail')}}</div>
                                                             @endif
-                                                            <form class="form-valide" action="{{route('EkleKategori')}}"
+                                                            <form class="form-valide" action="{{route('EkleSube')}}"
                                                                   method="post">
                                                                 @csrf
-                                                                <div class="form-group row">
-                                                                    <label class="col-lg-4 col-form-label"
-                                                                           for="val-username">Kategori
-                                                                        <span class="text-danger">*</span>
-                                                                    </label>
-                                                                    <div class="col-lg-6">
-                                                                        <input type="text" class="form-control"
-                                                                               id="val-username" name="kategori_adi"
-                                                                               placeholder="Kategori giriniz.">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        {{--Şube Adı--}}
+                                                                        <div class="form-group row">
+                                                                            <label class="col-lg-4 col-form-label"
+                                                                                   for="val-username">Şube Adı
+                                                                                <span class="text-danger">*</span>
+                                                                            </label>
+                                                                            <div class="col-lg-6">
+                                                                                <input type="text" class="form-control"
+                                                                                       id="val-username" name="sube_adi"
+                                                                                       placeholder="Şube adı giriniz.">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-lg-4 col-form-label"
+                                                                                   for="val-username">Şube Adresi
+                                                                                <span class="text-danger">*</span>
+                                                                            </label>
+                                                                            <div class="col-lg-6">
+                                                                                <input type="text" class="form-control"
+                                                                                       id="val-username" name="adres"
+                                                                                       placeholder="Şube adresi giriniz.">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label class="col-lg-4 col-form-label"
-                                                                           for="val-skill">Üst Kategori
-                                                                    </label>
-                                                                    <div class="col-lg-6">
-                                                                        <select class="form-control" id="val-skill"
-                                                                                name="ust_kategori">
-                                                                            <option value="">Üst kategori varsa
-                                                                                seçiniz.
-                                                                            </option>
-                                                                            @if(!empty($kategoriler) && count($kategoriler)>0)
-                                                                                @foreach($kategoriler as $kategori)
-                                                                                    <option
-                                                                                        value="{{$kategori->kategori_ID ?? 'gelmedi'}}">{{$kategori->kategori_adi ?? 'gelmedi'}}</option>
-                                                                                @endforeach
-                                                                            @endif
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <div class="col-lg-8 ml-auto">
-                                                                        <button type="submit" class="btn btn-primary">
-                                                                            Kaydet
-                                                                        </button>
+                                                                    <div class="col-md-6">
+                                                                        {{--Şube Adı--}}
+                                                                        <div class="form-group row">
+                                                                            <label class="col-lg-4 col-form-label"
+                                                                                   for="val-username">Şube Tel
+                                                                                <span class="text-danger">*</span>
+                                                                            </label>
+                                                                            <div class="col-lg-6">
+                                                                                <input type="text" class="form-control"
+                                                                                       id="val-username" name="sube_tel"
+                                                                                       placeholder="Şube telefonu giriniz.">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-lg-4 col-form-label" for="val-skill">Yetkili Kişi
+                                                                                <span class="text-danger">*</span>
+                                                                            </label>
+                                                                            <div class="col-lg-6">
+                                                                                <select class="form-control" id="val-skill"
+                                                                                        name="yetkili_kisi">
+                                                                                    <option value="">Yetkili seçiniz.
+                                                                                    </option>
+                                                                                    @if(!empty($yetkililer) && count($yetkililer)>0)
+                                                                                        @foreach($yetkililer as $yetkili)
+                                                                                            <option
+                                                                                                value="{{$yetkili->id ?? 'gelmedi'}}">{{$yetkili->name ?? 'gelmedi'}} {{$yetkili->surname}}</option>
+                                                                                        @endforeach
+                                                                                    @endif
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        {{--Kaydet--}}
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-8 ml-auto">
+                                                                                <button type="submit" class="btn btn-primary">
+                                                                                    Kaydet
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                     </div>
-                                                    {{--Kategori gösterme--}}
-                                                    {{--<div class="col-md-6">
-                                                        <div class="card-content">
-                                                            <div class="nestable">
-                                                                <div class="dd" id="nestable">
-                                                                    <ol class="dd-list">
-                                                                        @if(!empty($kategoriler) && count($kategoriler)>0)
-                                                                            @foreach($kategoriler as $kategori)
-                                                                                @if($kategori->ust_kategori === null)
-                                                                                    <li class="dd-item"
-                                                                                        data-id="{{$kategori->kategori_ID}}">
-                                                                                        <div class="row">
-                                                                                            <div class="col-md-7">
-                                                                                                <div class="dd-handle"> {{$kategori->kategori_adi}} </div>
-                                                                                            </div>
-                                                                                            <div class="col-md-2 mr-2"><button class="btn btn-primary">Düzenle</button></div>
-                                                                                            <div class="col-md-2"><button class="btn btn-danger">Sil</button></div>
-                                                                                        </div>
-                                                                                        @include('backend.inc.altKategori', ['altKategoriler' => $kategoriler, 'ustKategoriID' => $kategori->kategori_ID])
-                                                                                    </li>
-                                                                                @endif
-                                                                            @endforeach
-                                                                        @endif
-                                                                    </ol>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -117,10 +119,11 @@
                             </div>
                             </form>
                         </div>
+                        {{--sube gösterme--}}
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Kategori Listesi</h4>
+                                    <h4 class="card-title">Şube Listesi</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -128,23 +131,26 @@
                                             <thead>
                                             <tr>
                                                 <th scope="col">Id</th>
-                                                <th scope="col">Kategori Adı</th>
-                                                <th scope="col">Üst Kategorsi</th>
+                                                <th scope="col">Şube Adı</th>
+                                                <th scope="col">Adres</th>
+                                                <th scope="col">Şube Tel</th>
+                                                <th scope="col">Yetkili Kişi</th>
+                                                <th scope="col">Yetkili E-mail</th>
+                                                <th scope="col">Yetkili Pozisyonu</th>
                                                 <th scope="col">İşlemler</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if(!empty($kategoriler) && count($kategoriler)>0)
-                                                @foreach($kategoriler as $kategori)
+                                            @if(!empty($subeler) && count($subeler)>0)
+                                                @foreach($subeler as $sube)
                                                     <tr>
-                                                        <td>{{$kategori->kategori_ID}}</td>
-                                                        <td>{{$kategori->kategori_adi}}</td>
-                                                        <td>@if($kategori->ust_kategori)
-                                                                {{$kategori->ustKategori->kategori_adi}}
-                                                                {{--@dd($kategori)--}}{{--Burda kullandığımız classın adıyla bağlı olduğu veriyi çektik--}}
-                                                            @else
-                                                                Yok
-                                                            @endif</td>
+                                                        <td>{{$sube->sube_ID ?? 'Veri Yok'}}</td>
+                                                        <td>{{$sube->sube_adi ?? 'Veri Yok'}}</td>
+                                                        <td>{{$sube->adres ?? 'Veri Yok'}}</td>
+                                                        <td>{{$sube->sube_tel ?? 'Veri Yok'}}</td>
+                                                        <td>{{$sube->yetkili->name ?? 'Veri Yok'}} {{$sube->yetkili->surname ?? 'Veri Yok'}}</td>
+                                                        <td>{{$sube->yetkili->email ?? 'Veri Yok'}}</td>
+                                                        <td>{{$sube->yetkili->rol->rol_adi?? 'Veri Yok'}}</td>
                                                         <td><span><a href="javascript:void()" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
                                                         </td>
                                                     </tr>

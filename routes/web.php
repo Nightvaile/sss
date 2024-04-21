@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AjaxKontrol;
+use App\Http\Controllers\VeriKontrol;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SayfaKontrol;
 use Illuminate\Support\Facades\Route;
@@ -15,29 +15,36 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*-----------------------Paneller-------------------------*/
+/*-----------------------PANELLER-------------------------*/
 Route::get('/',[SayfaKontrol::class,'pIndex'])->name('pIndex');
 
 Route::get('/kullanicilar',[SayfaKontrol::class,'pKullanicilar'])->name('pKullanicilar');
 
-/*------------------------Formlar---------------------------*/
+/*------------------------FORMLAR---------------------------*/
 Route::get('/kullanici-ekle',[SayfaKontrol::class,'fEkleKullanici'])->name('fEkleKullanici');
-Route::post('/kullanici-ekle',[AjaxKontrol::class,'EkleKullanici'])->name('EkleKullanici');
+Route::post('/kullanici-ekle',[VeriKontrol::class,'EkleKullanici'])->name('EkleKullanici');
 
+/*-------------------------Urunler----------------------------*/
 Route::get('/urun-ekle',[SayfaKontrol::class,'fEkleUrun'])->name('fEkleUrun');
 
+/*--------------------------Kategori------------------------------*/
 Route::get('/kategori-ekle',[SayfaKontrol::class,'fEkleKategori'])->name('fEkleKategori');
-Route::post('/kategori-ekle',[AjaxKontrol::class,'EkleKategori'])->name('EkleKategori');
+Route::post('/kategori-ekle',[VeriKontrol::class,'EkleKategori'])->name('EkleKategori');
+Route::get('/kategori-duzenle/{id}',[SayfaKontrol::class,'fDuzenleKategori'])->name('fDuzenleKategori');
+Route::post('/kategori-duzenle/{id}',[VeriKontrol::class,'DuzenleKategori'])->name('DuzenleKategori');
+Route::get('/kategori-sil/{id}',[VeriKontrol::class,'SilKategori'])->name('SilKategori');
 
+/*---------------------------Subeler-----------------------------*/
 Route::get('/sube-ekle',[SayfaKontrol::class,'fEkleSube'])->name('fEkleSube');
-Route::post('/sube-ekle',[AjaxKontrol::class,'EkleSube'])->name('EkleSube');
+Route::post('/sube-ekle',[VeriKontrol::class,'EkleSube'])->name('EkleSube');
 
+/*----------------------------Roller-------------------------------*/
 Route::get('/rol-ekle',[SayfaKontrol::class,'fEkleRol'])->name('fEkleRol');
-Route::post('/rol-ekle',[AjaxKontrol::class,'EkleRol'])->name('EkleRol');
+Route::post('/rol-ekle',[VeriKontrol::class,'EkleRol'])->name('EkleRol');
 
-
+/*------------------------------Bedenler-----------------------------------*/
 Route::get('/beden-ekle',[SayfaKontrol::class,'fEkleBeden'])->name('fEkleBeden');
-Route::post('/beden-ekle',[AjaxKontrol::class,'EkleBeden'])->name('EkleBeden');
+Route::post('/beden-ekle',[VeriKontrol::class,'EkleBeden'])->name('EkleBeden');
 
 
 /*-------------------------Auth--------------------------*/
