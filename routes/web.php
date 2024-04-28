@@ -15,36 +15,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*-----------------------PANELLER-------------------------*/
-Route::get('/',[SayfaKontrol::class,'pIndex'])->name('pIndex');
-
-Route::get('/kullanicilar',[SayfaKontrol::class,'pKullanicilar'])->name('pKullanicilar');
-
-/*------------------------FORMLAR---------------------------*/
-Route::get('/kullanici-ekle',[SayfaKontrol::class,'fEkleKullanici'])->name('fEkleKullanici');
-Route::post('/kullanici-ekle',[VeriKontrol::class,'EkleKullanici'])->name('EkleKullanici');
-
-/*-------------------------Urunler----------------------------*/
-Route::get('/urun-ekle',[SayfaKontrol::class,'fEkleUrun'])->name('fEkleUrun');
-
-/*--------------------------Kategori------------------------------*/
-Route::get('/kategori-ekle',[SayfaKontrol::class,'fEkleKategori'])->name('fEkleKategori');
-Route::post('/kategori-ekle',[VeriKontrol::class,'EkleKategori'])->name('EkleKategori');
-Route::get('/kategori-duzenle/{id}',[SayfaKontrol::class,'fDuzenleKategori'])->name('fDuzenleKategori');
-Route::post('/kategori-duzenle/{id}',[VeriKontrol::class,'DuzenleKategori'])->name('DuzenleKategori');
-Route::get('/kategori-sil/{id}',[VeriKontrol::class,'SilKategori'])->name('SilKategori');
-
-/*---------------------------Subeler-----------------------------*/
-Route::get('/sube-ekle',[SayfaKontrol::class,'fEkleSube'])->name('fEkleSube');
-Route::post('/sube-ekle',[VeriKontrol::class,'EkleSube'])->name('EkleSube');
-
-/*----------------------------Roller-------------------------------*/
-Route::get('/rol-ekle',[SayfaKontrol::class,'fEkleRol'])->name('fEkleRol');
-Route::post('/rol-ekle',[VeriKontrol::class,'EkleRol'])->name('EkleRol');
-
-/*------------------------------Bedenler-----------------------------------*/
-Route::get('/beden-ekle',[SayfaKontrol::class,'fEkleBeden'])->name('fEkleBeden');
-Route::post('/beden-ekle',[VeriKontrol::class,'EkleBeden'])->name('EkleBeden');
 
 
 /*-------------------------Auth--------------------------*/
@@ -53,9 +23,73 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    /*-----------------------PANELLER-------------------------*/
+    Route::get('/',[SayfaKontrol::class,'pIndex'])->name('pIndex');
+
+    Route::get('/kullanicilar',[SayfaKontrol::class,'pKullanicilar'])->name('pKullanicilar');
+
+    /*------------------------URUN FORMLARI---------------------------*/
+    /*------------------------------Bedenler--------------------------*/
+    Route::get('/beden-ekle',[SayfaKontrol::class,'fEkleBeden'])->name('fEkleBeden');
+    Route::post('/beden-ekle',[VeriKontrol::class,'EkleBeden'])->name('EkleBeden');
+    Route::get('/beden-duzenle/{id}',[SayfaKontrol::class,'fDuzenleBeden'])->name('fDuzenleBeden');
+    Route::post('/beden-duzenle/{id}',[VeriKontrol::class,'DuzenleBeden'])->name('DuzenleBeden');
+    Route::get('/beden-sil/{id}',[VeriKontrol::class,'SilBeden'])->name('SilBeden');
+
+    /*----------------------------Renkler-------------------------------*/
+    Route::get('/renk-ekle',[SayfaKontrol::class,'fEkleRenk'])->name('fEkleRenk');
+    Route::post('/renk-ekle',[VeriKontrol::class,'EkleRenk'])->name('EkleRenk');
+    Route::get('/renk-duzenle/{id}',[SayfaKontrol::class,'fDuzenleRenk'])->name('fDuzenleRenk');
+    Route::post('/renk-duzenle/{id}',[VeriKontrol::class,'DuzenleRenk'])->name('DuzenleRenk');
+    Route::get('/renk-sil/{id}',[VeriKontrol::class,'SilRenk'])->name('SilRenk');
+
+    /*----------------------------Markalar-------------------------------*/
+    Route::get('/marka-ekle',[SayfaKontrol::class,'fEkleMarka'])->name('fEkleMarka');
+    Route::post('/marka-ekle',[VeriKontrol::class,'EkleMarka'])->name('EkleMarka');
+    Route::get('/marka-duzenle/{id}',[SayfaKontrol::class,'fDuzenleMarka'])->name('fDuzenleMarka');
+    Route::post('/marka-duzenle/{id}',[VeriKontrol::class,'DuzenleMarka'])->name('DuzenleMarka');
+    Route::get('/marka-sil/{id}',[VeriKontrol::class,'SilMarka'])->name('SilMarka');
+
+    /*--------------------------Kategori------------------------------*/
+    Route::get('/kategori-ekle',[SayfaKontrol::class,'fEkleKategori'])->name('fEkleKategori');
+    Route::post('/kategori-ekle',[VeriKontrol::class,'EkleKategori'])->name('EkleKategori');
+    Route::get('/kategori-duzenle/{id}',[SayfaKontrol::class,'fDuzenleKategori'])->name('fDuzenleKategori');
+    Route::post('/kategori-duzenle/{id}',[VeriKontrol::class,'DuzenleKategori'])->name('DuzenleKategori');
+    Route::get('/kategori-sil/{id}',[VeriKontrol::class,'SilKategori'])->name('SilKategori');
+
+    /*----------------------------Seriler-------------------------------*/
+    Route::get('/seri-ekle',[SayfaKontrol::class,'fEkleSeri'])->name('fEkleSeri');
+    Route::post('/seri-ekle',[VeriKontrol::class,'EkleSeri'])->name('EkleSeri');
+    Route::get('/seri-duzenle/{id}',[SayfaKontrol::class,'fDuzenleSeri'])->name('fDuzenleSeri');
+    Route::post('/seri-duzenle/{id}',[VeriKontrol::class,'DuzenleSeri'])->name('DuzenleSeri');
+    Route::get('/seri-sil/{id}',[VeriKontrol::class,'SilSeri'])->name('SilSeri');
+
+    /*-------------------------Urunler----------------------------*/
+    Route::get('/urun-ekle',[SayfaKontrol::class,'fEkleUrun'])->name('fEkleUrun');
+    Route::post('/urun-ekle',[VeriKontrol::class,'EkleUrun'])->name('EkleUrun');
+    Route::get('/urun-duzenle/{id}',[SayfaKontrol::class,'fDuzenleUrun'])->name('fDuzenleUrun');
+    Route::post('/urun-duzenle/{id}',[VeriKontrol::class,'DuzenleUrun'])->name('DuzenleUrun');
+    Route::get('/urun-sil/{id}',[VeriKontrol::class,'SilUrun'])->name('SilUrun');
+
+    /*------------------------------YONETICI FORMLARI------------------------------*/
+    /*--------------------------Kullanicilar------------------------------*/
+    Route::get('/kullanici-ekle',[SayfaKontrol::class,'fEkleKullanici'])->name('fEkleKullanici');
+    Route::post('/kullanici-ekle',[VeriKontrol::class,'EkleKullanici'])->name('EkleKullanici');
+
+    /*---------------------------Subeler-----------------------------*/
+    Route::get('/sube-ekle',[SayfaKontrol::class,'fEkleSube'])->name('fEkleSube');
+    Route::post('/sube-ekle',[VeriKontrol::class,'EkleSube'])->name('EkleSube');
+
+    /*----------------------------Roller-------------------------------*/
+    Route::get('/rol-ekle',[SayfaKontrol::class,'fEkleRol'])->name('fEkleRol');
+    Route::post('/rol-ekle',[VeriKontrol::class,'EkleRol'])->name('EkleRol');
+
+
 });
 
 require __DIR__.'/auth.php';

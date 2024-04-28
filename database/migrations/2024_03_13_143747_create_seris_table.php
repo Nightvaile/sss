@@ -13,8 +13,17 @@ return new class extends Migration
     {
         Schema::create('seriler', function (Blueprint $table) {
             $table->id('seri_ID');
-            $table->string('seri_adi');
+            $table->string('urun_adi');
+            $table->string('urun_aciklama')->nullable()->default('Test');
+            $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('marka_id');
             $table->timestamps();
+
+
+            $table->foreign('kategori_id')->references('kategori_ID')->on('kategoriler')
+                ->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('marka_id')->references('marka_ID')->on('markalar')
+                ->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

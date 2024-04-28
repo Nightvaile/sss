@@ -1,6 +1,6 @@
 @extends('backend.layout.layout')
 @section('title')
-    urun eaneli
+    Gösterge Paneli
 @endsection
 @section('head_in')
     <!-- Favicon icon -->

@@ -11,14 +11,10 @@ class urunler extends Model
     protected $table = 'urunler';
     protected $primaryKey = 'barcode_NO';
     protected $fillable = [
-        'urun_adi',
-        'aciklama',
+        'seri_id',
         'fiyat',
         'adet',
         'min_adet_bildirimi',
-        'seri_id',
-        'kategori_id',
-        'marka_id',
         'renk_id',
         'beden_id',
     ];

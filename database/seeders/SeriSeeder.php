@@ -15,16 +15,28 @@ class SeriSeeder extends Seeder
     {
         $seriler = [
             [
-                'seri_adi' =>'Kış',
+                'urun_adi' => 'Kazak',
+                'kategori_id' => '1',
+                'marka_id'=>'1',
+
             ],
             [
-                'seri_adi' =>'Yaz',
+                'urun_adi' => 'Tişört',
+                'kategori_id' => '2',
+                'marka_id'=>'2',
+
             ],
             [
-                'seri_adi' =>'Sonbahar',
+                'urun_adi' => 'Pantalon',
+                'kategori_id' => '3',
+                'marka_id'=>'3',
+
             ],
             [
-                'seri_adi' =>'İlkbahar',
+                'urun_adi' => 'Şort',
+                'kategori_id' => '4',
+                'marka_id'=>'4',
+
             ],
         ];
         foreach ($seriler as $seri) {
