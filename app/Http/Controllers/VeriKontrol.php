@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\bedenler;
 use App\Models\kategoriler;
+use App\Models\renkler;
 use App\Models\roller;
 use App\Models\seriler;
 use App\Models\subeler;
@@ -22,7 +23,16 @@ class VeriKontrol extends Controller
         User::create($kullanici);
         return back()->withSuccess('Başarıyla kaydedildi.');
     }
+    public function SilKullanici($id)
+    {
+        $veri = User::whereId($id)->first();
 
+        if ($veri) {
+            User::whereId($id)->delete();
+            return redirect()->route('pKullanicilar')->with('success', 'Kullanıcı silindi!');
+        } else
+            return redirect()->route('pKullanicilar')->with('fail', 'Kullanıcı silinemedi!');
+    }
     /*-----------------------------Rol-------------------------------*/
     public function EkleRol(Request $request)
     {
@@ -67,10 +77,8 @@ class VeriKontrol extends Controller
     public function SilBeden($id)
     {
         $veri = bedenler::where('beden_ID', $id)->first();
-//                dd($veri);
 
-        if ($veri)
-        {
+        if ($veri) {
             bedenler::where('beden_ID', $id)->delete();
             return redirect()->route('fEkleBeden')->with('fail', 'Beden silindi!');
         } else
@@ -78,35 +86,68 @@ class VeriKontrol extends Controller
     }
 
     /*----------------------------------Renk----------------------------------*/
-    public function EkleRenk()
+    public function EkleRenk(Request $request)
     {
-
+        $renk = $request->all();
+        if ($renk['renk_adi'] === null) {
+            return back()->withFail('Kaydedilemedi. Renk adı giriniz.');
+        }
+        renkler::create($renk);
+        return back()->withSuccess('Başarıyla kaydedildi.');
     }
 
-    public function DuzenleRenk()
+    public function DuzenleRenk(Request $request, $id)
     {
-
+        renkler::where('renk_id', $id)->update([
+            'renk_adi' => $request->renk_adi,
+        ]);
+        return redirect()->route('fEkleRenk')->with('success', 'Renk güncellendi.');
     }
 
-    public function SilRenk()
+    public function SilRenk($id)
     {
+        $veri = renkler::where('renk_ID', $id)->first();
 
+        if ($veri) {
+            renkler::where('renk_ID', $id)->delete();
+            return redirect()->route('fEkleRenk')->with('fail', 'Renk silindi!');
+        } else
+            return redirect()->route('fEkleRenk')->with('info', 'Renk silinemedi!');
     }
 
     /*----------------------------------Marka----------------------------------*/
-    public function EkleMarka()
+    public function EkleMarka(Request $request)
     {
+        $marka = $request->all();
 
+        if ($marka['marka_adi'] === null) {
+            return back()->withFail('Kaydedilemedi. marka adı giriniz.');
+        }
+        markalar::create($marka);
+        return back()->withSuccess('Başarıyla kaydedildi.');
     }
 
-    public function DuzenleMarka()
+    public function DuzenleMarka(Request $request, $id)
     {
-
+        if ($id)
+            return redirect()->route('fEkleMarka')->with('fail', 'Geçersiz ID!');
+        markalar::where('marka_id', $id)->update([
+            'marka_adi' => $request->marka_adi,
+        ]);
+        return redirect()->route('fEkleMarka')->with('success', 'Marka güncellendi.');
     }
 
-    public function SilMarka()
+    public function SilMarka($id)
     {
-
+        if ($id) {
+            $veri = markalar::where('marka_ID', $id)->first();
+            if ($veri) {
+                markalar::where('marka_ID', $id)->delete();
+                return redirect()->route('fEkleMarka')->with('success', 'Marka silindi!');
+            } else
+                return redirect()->route('fEkleMarka')->with('fail', 'Marka1 silinemedi!');
+        } else
+            return redirect()->route('fEkleMarka')->with('fail', 'Marka2 silinemedi!');
     }
 
     /*-----------------------------Kategori-------------------------------*/
@@ -166,6 +207,7 @@ class VeriKontrol extends Controller
     {
 
     }
+
     /*-----------------------------Urun--------------------------------*/
     public function EkleUrun(Request $request)
     {

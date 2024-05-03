@@ -14,9 +14,8 @@ class roller extends Model
     protected $fillable = [
         'rol_adi',
     ];
-
-    public function users()
+   /* public function users()
     {
         return $this->hasMany(User::class, 'rol_id');
-    }
+    }*/
 }

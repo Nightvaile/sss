@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/',[SayfaKontrol::class,'pIndex'])->name('pIndex');
 
     Route::get('/kullanicilar',[SayfaKontrol::class,'pKullanicilar'])->name('pKullanicilar');
+    Route::get('/kullanici-sil/{id}',[VeriKontrol::class,'SilKullanici'])->name('SilKullanici');
 
     /*------------------------URUN FORMLARI---------------------------*/
     /*------------------------------Bedenler--------------------------*/

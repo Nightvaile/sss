@@ -11,6 +11,7 @@
     <link href="{{asset('backend')}}/css/style.css" rel="stylesheet">
 @endsection
 @section('content')
+{{--    @dd($urunler)--}}
     <div class="content-body">
         <div class="container-fluid">
             <!-- row -->
@@ -25,18 +26,20 @@
                                 <table id="example" class="display" style="min-width: 845px">
                                     <thead>
                                     <tr>
-                                        <th>Kimlik No</th>
-                                        <th>Ad</th>
-                                        <th>Soyad</th>
-                                        <th>Telefon No</th>
-                                        <th>E-posta</th>
-                                        <th>Pozisyon</th>
-                                        <th>Adres</th>
+                                        <th>Barcode</th>
+                                        <th>Seri</th>
+                                        <th>Kategori</th>
+                                        <th>Marka</th>
+                                        <th>Beden</th>
+                                        <th>Renk</th>
+                                        <th>Fiyat</th>
+{{--                                        <th>Min Adet Bildirimi</th>--}}
+                                        <th>Adet</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    {{--<tr>
                                         <td class="py-0">
                                             <img style="max-width: 50px; max-height: 50px;" src="https://demo.themefisher.com/mono-bootstrap/images/products/products-xs-01.jpg" alt="Product Image">
                                         </td>
@@ -59,17 +62,19 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr>--}}
                                     @if(!empty($urunler) && count($urunler)>0)
                                         @foreach($urunler as $urun)
                                             <tr>
-                                                <td>{{--$urun-> ?? 'Gelmedi'--}}</td>
-                                                <td>{{--$urun-> ?? 'Gelmedi'--}}</td>
-                                                <td>{{--$urun-> ?? 'Gelmedi'--}}</td>
-                                                <td>{{--$urun-> ?? 'Gelmedi'--}}</td>
-                                                <td>{{--$urun-> ?? 'Gelmedi'--}}</td>
-                                                <td>{{--$urun-> ?? 'Gelmedi'--}}</td>
-                                                <td>{{--$urun-> ?? 'Gelmedi'--}}</td>
+                                                <td>{{$urun->barkod_NO ?? 'Gelmedi'}}</td>
+                                                <td>{{$urun->seri->urun_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$urun->seri->kategori->kategori_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$urun->seri->marka->marka_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$urun->beden->beden_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$urun->renk->renk_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$urun->fiyat ?? 'Gelmedi'}}</td>
+{{--                                                <td>{{$urun->min_adet_bildirimi ?? 'Gelmedi'}}</td>--}}
+                                                <td>{{$urun->adet ?? 'Gelmedi'}}</td>
                                                 <td>
                                                     <span><a href="#" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
                                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
@@ -79,13 +84,15 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Kimlik No</th>
-                                        <th>Ad</th>
-                                        <th>Soyad</th>
-                                        <th>Telefon No</th>
-                                        <th>E-posta</th>
-                                        <th>Pozisyon</th>
-                                        <th>Adres</th>
+                                        <th>Barcode</th>
+                                        <th>Seri</th>
+                                        <th>Kategori</th>
+                                        <th>Marka</th>
+                                        <th>Beden</th>
+                                        <th>Renk</th>
+                                        <th>Fiyat</th>
+{{--                                        <th>Min Adet Bildirimi</th>--}}
+                                        <th>Adet</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </tfoot>
@@ -103,7 +110,9 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+{{--
     <script src="{{asset('backend/vendor/global/global.min.js')}}"></script>
+--}}
     <script src="{{asset('backend/js/quixnav-init.js')}}"></script>
     <script src="{{asset('backend/js/custom.min.js')}}"></script>
 

@@ -36,7 +36,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    {{--<tr>
                                         <td class="py-0">
                                             <img style="max-width: 50px; max-height: 50px;" src="https://demo.themefisher.com/mono-bootstrap/images/products/products-xs-01.jpg" alt="Product Image">
                                         </td>
@@ -59,7 +59,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr>--}}
                                     @if(!empty($kullanicilar) && count($kullanicilar)>0)
                                         @foreach($kullanicilar as $kullanici)
                                             <tr>
@@ -71,8 +71,8 @@
                                                 <td>{{$kullanici->rol->rol_adi ?? 'Gelmedi'}}</td>
                                                 <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
                                                 <td>
-                                                    <span><a href="#" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
+                                                    <span><a href="" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
+                                                        <a href="{{route('SilKullanici',$kullanici->id)}}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -103,7 +103,9 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+{{--
     <script src="{{asset('backend/vendor/global/global.min.js')}}"></script>
+--}}
     <script src="{{asset('backend/js/quixnav-init.js')}}"></script>
     <script src="{{asset('backend/js/custom.min.js')}}"></script>
 

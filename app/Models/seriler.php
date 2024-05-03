@@ -17,4 +17,12 @@ class seriler extends Model
         'kategori_id',
         'marka_id',
     ];
+    public function marka()
+    {
+        return $this->belongsTo(markalar::class, 'marka_id','marka_ID');
+    }
+    public function kategori()
+    {
+        return $this->belongsTo(kategoriler::class, 'kategori_id','kategori_ID');
+    }
 }

@@ -29,7 +29,7 @@
                     <div class="row page-titles mx-0 mt-4">
                         <div class="col-sm-12 p-md-2">
                             <div class="welcome-text">
-                                <h4>Merhaba,(isim) Hoşgeldiniz!</h4>
+                                <h4>Merhaba, {{ Auth::user()->name }} {{ Auth::user()->surname }} Hoşgeldiniz!</h4>
                             </div>
                         </div>
                     </div>

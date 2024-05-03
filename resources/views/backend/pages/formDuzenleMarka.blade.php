@@ -1,6 +1,6 @@
 @extends('backend.layout.layout')
 @section('title')
-    Renk Ekle
+    marka Ekle
 @endsection
 @section('head_in')
     <!-- Nestable -->
@@ -14,20 +14,19 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Renkler</h4>
+                            <h4 class="card-title">Markaler</h4>
                         </div>
                         <div class="card-body">
-
                             <div class="form-validation">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title">Renk Ekle</h4>
+                                                <h4 class="card-title">Marka Düzenle</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
-                                                    {{--renk ekleme--}}
+                                                    {{--marka Duzenleme--}}
                                                     <div class="col-md-12">
                                                         <div class="col-md-12">
                                                             @if(session('success'))
@@ -37,18 +36,18 @@
                                                                 <div
                                                                     class="alert alert-danger">{{session('fail')}}</div>
                                                             @endif
-                                                            <form class="form-valide" action="{{route('EkleRenk')}}"
+                                                            <form class="form-valide" action="{{route('DuzenleMarka',$veri->marka_ID)}}"
                                                                   method="post">
                                                                 @csrf
                                                                 <div class="form-group row">
                                                                     <label class="col-lg-4 col-form-label"
-                                                                           for="val-username">renk
+                                                                           for="val-username">Marka
                                                                         <span class="text-danger">*</span>
                                                                     </label>
                                                                     <div class="col-lg-6">
                                                                         <input type="text" class="form-control"
-                                                                               id="val-username" name="renk_adi"
-                                                                               placeholder="Renk giriniz.">
+                                                                               id="val-username" name="marka_adi"
+                                                                               placeholder="marka giriniz." value="{{$veri->marka_adi}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -69,49 +68,10 @@
                             </div>
                             </form>
                         </div>
-                        {{--renk gösterme--}}
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Renk Listesi</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">Id</th>
-                                                <th scope="col">Renk Adı</th>
-                                                <th scope="col">İşlemler</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if(!empty($renkler) && count($renkler)>0)
-                                                @foreach($renkler as $renk)
-                                                    <tr>
-                                                        <td>{{$renk->renk_ID}}</td>
-                                                        <td>{{$renk->renk_adi}}</td>
-                                                        <td>
-                                                            <span>
-                                                                <a href="{{route('fDuzenleRenk',$renk->renk_ID)}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                    <i class="fa fa-pencil color-muted"></i>
-                                                                </a>
-                                                                <a href="{{route('SilRenk',$renk->renk_ID)}}" data-toggle="tooltip" data-placement="top" title="Close">
-                                                                    <i class="fa fa-close color-danger"></i>
-                                                                </a>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>

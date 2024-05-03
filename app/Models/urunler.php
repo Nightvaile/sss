@@ -18,4 +18,16 @@ class urunler extends Model
         'renk_id',
         'beden_id',
     ];
+    public function beden()
+    {
+        return $this->belongsTo(bedenler::class, 'beden_id','beden_ID');
+    }
+    public function renk()
+    {
+        return $this->belongsTo(renkler::class, 'renk_id','renk_ID');
+    }
+    public function seri()
+    {
+        return $this->belongsTo(seriler::class, 'seri_id','seri_ID');
+    }
 }

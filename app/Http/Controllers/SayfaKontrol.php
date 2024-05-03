@@ -18,7 +18,7 @@ class SayfaKontrol extends Controller
     /*--------------------------------------------------PANELLER------------------------------------------------*/
     public function pIndex()
     {
-        $urunler = urunler::all();
+        $urunler = urunler::with('beden','renk','seri')->get();
         return view('backend.pages.panelIndex', compact('urunler'));
     }
 
@@ -77,9 +77,13 @@ class SayfaKontrol extends Controller
         return view('backend.pages.formEkleRenk', compact('renkler'));
     }
 
-    public function fDuzenleRenk()
+    public function fDuzenleRenk($id)
     {
-
+        $veri = renkler::where('renk_ID', $id)->first();
+        if ($veri)
+            return view('backend.pages.formDuzenleRenk', compact('veri'));
+        else
+            return redirect()->route('fEkleRenk')->with('fail','Geçersiz ID.');
     }
 
     /*-------------------------------------Marka------------------------------------*/
@@ -89,9 +93,13 @@ class SayfaKontrol extends Controller
         return view('backend.pages.formEkleMarka', compact('markalar'));
     }
 
-    public function fDuzenleMarka()
+    public function fDuzenleMarka($id)
     {
-
+        $veri = markalar::where('marka_ID', $id)->first();
+        if ($veri)
+            return view('backend.pages.formDuzenleMarka', compact('veri'));
+        else
+            return redirect()->route('fEkleMarka')->with('fail','Geçersiz ID.');
     }
 
     /*-------------------------------Kategori--------------------------------------*/
