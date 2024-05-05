@@ -1,9 +1,14 @@
 @extends('backend.layout.layout')
-@section('title')Urun Ekle @endsection
+{{----------------------title START-------------------------}}
+@section('title') @endsection
+{{----------------------title END-------------------------}}
+{{----------------------head_in START-------------------------}}
 @section('head_in')
     <!-- Nestable -->
     <link href="{{asset('backend')}}/vendor/nestable2/css/jquery.nestable.min.css" rel="stylesheet">
 @endsection
+{{-----------------------head_in END--------------------------}}
+{{----------------------content START-------------------------}}
 @section('content')
     <div class="content-body">
         <div class="container-fluid">
@@ -18,6 +23,7 @@
                             <div class="form-validation">
                                 <form class="form-valide" action="#" method="post">
                                     <div class="row">
+
                                         <div class="col-xl-6">
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-username">Username
@@ -159,10 +165,13 @@
         </div>
     </div>
 @endsection
+{{-----------------------content END--------------------------}}
+
+{{----------------------scripts START-------------------------}}
 @section('scripts')
     <!-- Jquery Validation -->
     <script src="{{asset('backend/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <!-- Form validate init -->
     <script src="{{asset('backend/js/plugins-init/jquery.validate-init.js')}}"></script>
 @endsection
-
+{{-----------------------scripts END--------------------------}}

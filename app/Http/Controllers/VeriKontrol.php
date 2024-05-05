@@ -12,6 +12,7 @@ use App\Models\markalar;
 use App\Models\urunler;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class VeriKontrol extends Controller
 {
@@ -80,9 +81,9 @@ class VeriKontrol extends Controller
 
         if ($veri) {
             bedenler::where('beden_ID', $id)->delete();
-            return redirect()->route('fEkleBeden')->with('fail', 'Beden silindi!');
+            return redirect()->route('fEkleBeden')->with('success', 'Beden silindi!');
         } else
-            return redirect()->route('fEkleBeden')->with('info', 'Beden silinemedi!');
+            return redirect()->route('fEkleBeden')->with('fail', 'Beden silinemedi!');
     }
 
     /*----------------------------------Renk----------------------------------*/
@@ -110,9 +111,9 @@ class VeriKontrol extends Controller
 
         if ($veri) {
             renkler::where('renk_ID', $id)->delete();
-            return redirect()->route('fEkleRenk')->with('fail', 'Renk silindi!');
+            return redirect()->route('fEkleRenk')->with('success', 'Renk silindi!');
         } else
-            return redirect()->route('fEkleRenk')->with('info', 'Renk silinemedi!');
+            return redirect()->route('fEkleRenk')->with('fail', 'Renk silinemedi!');
     }
 
     /*----------------------------------Marka----------------------------------*/
@@ -182,30 +183,98 @@ class VeriKontrol extends Controller
 
         if ($veri) {
             kategoriler::where('kategori_ID', $id)->delete();
-            return redirect()->route('fEkleKategori')->with('fail', 'Kategori silindi!');
+            return redirect()->route('fEkleKategori')->with('success', 'Kategori silindi!');
         } else
-            return redirect()->route('fEkleKategori')->with('info', 'Kategori silinemedi!');
+            return redirect()->route('fEkleKategori')->with('fail', 'Kategori silinemedi!');
     }
 
     /*------------------------------Seri-------------------------------*/
-    public function EkleSeri(Request $request)
+    /*public function EkleSeri(Request $request)
     {
         $seri = $request->all();
-        if ($seri['seri_adi'] === null) {
+        if ($seri['urun_adi'] === null) {
             return back()->withFail('Kaydedilemedi. Seri adı giriniz.');
         }
         seriler::create($seri);
         return back()->withSuccess('Başarıyla kaydedildi.');
+        $seri = $request->validate([
+            'urun_adi' => 'required|string|max:255',
+            'seri_kodu' => 'nullable|string|max:255|unique:seriler,seri_kodu', // Validate seri_kodu for uniqueness
+            'urun_aciklama' => 'nullable|string',
+            'kategori_id' => 'required|integer|exists:kategoriler,kategori_ID',
+            'marka_id' => 'required|integer|exists:markalar,marka_ID',
+        ]);
+
+        // Generate slug from seri_kodu (if provided)
+        if (isset($seri['seri_kodu'])) {
+            $seri['seri_kodu'] = Str::slug($seri['seri_kodu']);
+        }
+
+        // Create the new seri
+        $yeniSeri = Seriler::create($seri);
+
+        return back()->withSuccess('Seri başarıyla eklendi.');
+    }*/
+    public function EkleSeri(Request $request) {
+        $seri = $request->validate([
+            'urun_adi' => 'required|string|max:255',
+            'seri_kodu' => 'nullable|string|max:255|unique:seriler,seri_kodu', // Validate seri_kodu for uniqueness
+            'urun_aciklama' => 'nullable|string',
+            'kategori_id' => 'required|integer|exists:kategoriler,kategori_ID',
+            'marka_id' => 'required|integer|exists:markalar,marka_ID',
+        ]);
+
+        // Generate slug from seri_kodu (if provided)
+        if (isset($seri['seri_kodu'])) {
+            $seri['seri_kodu'] = Str::slug($seri['seri_kodu']);
+        }
+
+        // Check if seri_kodu is unique
+        if (Seriler::where('seri_kodu', $seri['seri_kodu'])->exists()) {
+            return back()->withFail('Seri kodu zaten mevcut. Farklı bir seri kodu deneyin.');
+        }
+
+        // Create the new seri
+        $yeniSeri = Seriler::create($seri);
+
+        return back()->withSuccess('Seri başarıyla eklendi.');
     }
 
-    public function DuzenleSeri()
-    {
 
+    public function DuzenleSeri(Request $request, $id)
+    {
+        $seri = seriler::find($id);
+
+        if ($request->seri_kodu) {
+            $seri->seri_kodu = Str::slug($request->seri_kodu);
+        } else {
+            $seri->seri_kodu = Str::slug($request->urun_adi);
+        }
+
+        if ($request->seri_kodu) {
+            $seri->seri_kodu = strtoupper($seri->seri_kodu);
+        }
+
+        $seri->urun_adi = $request->urun_adi;
+        $seri->urun_aciklama = $request->urun_aciklama;
+        $seri->kategori_id = $request->kategori_id;
+        $seri->marka_id = $request->marka_id;
+
+        $seri->save();
+
+        return redirect()->route('fEkleSeri')->with('success', 'Seri güncellendi.');
     }
 
-    public function SilSeri()
+    public function SilSeri($id)
     {
+        $veri = seriler::where('seri_ID', $id)->first();
+        /*        dd($veri);*/
 
+        if ($veri) {
+            seriler::where('seri_ID', $id)->delete();
+            return redirect()->route('fEkleSeri')->with('success', 'Seri silindi!');
+        } else
+            return redirect()->route('fEkleSeri')->with('fail', 'Seri silinemedi!');
     }
 
     /*-----------------------------Urun--------------------------------*/

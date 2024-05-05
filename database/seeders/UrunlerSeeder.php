@@ -26,6 +26,7 @@ class UrunlerSeeder extends Seeder
                 'beden_id' => '',
             ],*/
             [
+                'barkod_NO'=>'8610546461',
                 'seri_id' => '1',
                 'fiyat' => 1111.11,
                 'adet' => '100',
@@ -33,6 +34,7 @@ class UrunlerSeeder extends Seeder
                 'beden_id' => '1',
             ],
             [
+                'barkod_NO'=>'8610546462',
                 'seri_id' => '2',
                 'fiyat' => 222.22,
                 'adet' => '200',
@@ -40,6 +42,7 @@ class UrunlerSeeder extends Seeder
                 'beden_id' => '2',
             ],
             [
+                'barkod_NO'=>'8610546463',
                 'seri_id' => '3',
                 'fiyat' => 333.33,
                 'adet' => '300',
@@ -47,6 +50,7 @@ class UrunlerSeeder extends Seeder
                 'beden_id' => '3',
             ],
             [
+                'barkod_NO'=>'8610546464',
                 'seri_id' => '4',
                 'fiyat' => 444.44,
                 'adet' => '400',
@@ -54,6 +58,7 @@ class UrunlerSeeder extends Seeder
                 'beden_id' => '4',
             ],
             [
+                'barkod_NO'=>'8610546465',
                 'seri_id' => '1',
                 'fiyat' => 1234.99,
                 'adet' => '123',

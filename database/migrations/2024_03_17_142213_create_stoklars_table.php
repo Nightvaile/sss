@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         Schema::create('stoklar', function (Blueprint $table) {
             $table->id('stok_ID');
-            $table->unsignedBigInteger('barkod_no');
+            $table->unsignedBigInteger('urun_id');
             $table->unsignedBigInteger('sube_id');
             $table->integer('stok_sayisi');
             $table->timestamps();
 
-            $table->foreign('barkod_no')->references('barkod_NO')->on('urunler')
+            $table->foreign('urun_id')->references('urun_ID')->on('urunler')
                 ->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('sube_id')->references('sube_ID')->on('subeler')
                 ->cascadeOnUpdate()->cascadeOnDelete();

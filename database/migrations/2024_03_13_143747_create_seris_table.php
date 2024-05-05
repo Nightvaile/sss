@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('seriler', function (Blueprint $table) {
             $table->id('seri_ID');
             $table->string('urun_adi');
+            $table->string('seri_kodu')->unique();
             $table->string('urun_aciklama')->nullable()->default('Test');
             $table->unsignedBigInteger('kategori_id');
             $table->unsignedBigInteger('marka_id');

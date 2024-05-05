@@ -11,7 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('urunler', function (Blueprint $table) {
-            $table->id('barkod_NO')->startingValue(868111000000);
+            $table->id('urun_ID'); /*->startingValue(868111000000)*/
+            $table->bigInteger('barkod_NO')->unique()->unsigned();
             $table->unsignedBigInteger('seri_id');
             $table->decimal('fiyat', 10, 2);
             $table->integer('adet');

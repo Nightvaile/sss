@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('stok_haraketleri', function (Blueprint $table) {
             $table->id('stok_haraketi_ID');
-            $table->unsignedBigInteger('barkod_no');
+            $table->text('not')->nullable();
+            $table->unsignedBigInteger('urun_id');
             $table->unsignedBigInteger('personel_id');
             $table->unsignedBigInteger('gondereci');
             $table->unsignedBigInteger('alici');
@@ -22,7 +23,7 @@ return new class extends Migration {
             $table->decimal('total_fiyat', 20, 2)->nullable();
             $table->timestamps();
 
-            $table->foreign('barkod_no')->references('barkod_NO')->on('urunler')
+            $table->foreign('urun_id')->references('urun_ID')->on('urunler')
                 ->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('personel_id')->references('id')->on('users')
                 ->cascadeOnUpdate()->cascadeOnDelete();

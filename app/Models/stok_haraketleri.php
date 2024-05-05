@@ -11,7 +11,7 @@ class stok_haraketleri extends Model
     protected $table = 'stok_haraketleri';
     protected $primaryKey = 'stok_haraketi_ID';
     protected $fillable = [
-        'barkod_no',
+        'urun_id',
         'personel_id',
         'gondereci',
         'alici',

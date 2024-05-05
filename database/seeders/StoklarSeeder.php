@@ -15,42 +15,42 @@ class StoklarSeeder extends Seeder
     {
         $stoklar = [
             /*[
-                'barkod_no' => '',
+                'urun_id' => '',
                 'sube_id' => '',
                 'stok_sayisi' => '',
             ],*/
             [
-                'barkod_no' => '868111000000',
+                'urun_id' => '1',
                 'sube_id' => '1',
                 'stok_sayisi' => '20',
             ],
             [
-                'barkod_no' => '868111000000',
+                'urun_id' => '1',
                 'sube_id' => '2',
                 'stok_sayisi' => '40',
             ],
             [
-                'barkod_no' => '868111000000',
+                'urun_id' => '1',
                 'sube_id' => '3',
                 'stok_sayisi' => '40',
             ],
             [
-                'barkod_no' => '868111000001',
+                'urun_id' => '2',
                 'sube_id' => '3',
                 'stok_sayisi' => '200',
             ],
             [
-                'barkod_no' => '868111000002',
+                'urun_id' => '3',
                 'sube_id' => '3',
                 'stok_sayisi' => '300',
             ],
             [
-                'barkod_no' => '868111000003',
+                'urun_id' => '4',
                 'sube_id' => '3',
                 'stok_sayisi' => '400',
             ],
             [
-                'barkod_no' => '868111000004',
+                'urun_id' => '5',
                 'sube_id' => '3',
                 'stok_sayisi' => '123',
             ],

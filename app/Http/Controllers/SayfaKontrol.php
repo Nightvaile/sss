@@ -124,13 +124,24 @@ class SayfaKontrol extends Controller
     /*------------------------------------Seri------------------------------------*/
     public function fEkleSeri()
     {
+        $kategoriler = kategoriler::all();
+        $markalar = markalar::all();
         $seriler = seriler::all();
-        return view('backend.pages.formEkleSeri', compact('seriler'));
+        return view('backend.pages.formEkleSeri', compact('seriler','kategoriler','markalar'));
     }
 
-    public function fDuzenleSeri()
+    public function fDuzenleSeri($id)
     {
+        $veri = seriler::where('seri_ID', $id)->first();
+        $seriler = seriler::all();
+        $kategoriler = kategoriler::all();
+        $markalar = markalar::all();
+        /*        dd($veri);*/
 
+        if ($veri)
+            return view('backend.pages.formDuzenleSeri', compact('veri', 'seriler','kategoriler','markalar'));
+        else
+            return redirect()->route('fEkleSeri');
     }
 
     /*-----------------------------------Urun----------------------------------*/

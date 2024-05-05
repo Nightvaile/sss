@@ -34,14 +34,14 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-validation">
-                                        @if(session('Success'))
+                                        @if(session('success'))
                                             <div
                                                 class="alert alert-success">{{session('success')}}</div>
-                                        @elseif(session('Fail'))
+                                        @elseif(session('fail'))
                                             <div
                                                 class="alert alert-danger">{{session('fail')}}</div>
                                         @endif
-                                        <form class="form-valide" action="{{route('EkleSeri')}}" method="post">
+                                        <form class="form-valide" action="{{route('DuzenleSeri',$veri->seri_ID)}}" method="post">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-xl-6">
@@ -52,7 +52,7 @@
                                                         </label>
                                                         <div class="col-lg-6">
                                                             <input type="text" class="form-control" id="val-username"
-                                                                   name="urun_adi" placeholder="Ürün adı giriniz.">
+                                                                   name="urun_adi" placeholder="Ürün adı giriniz." value="{{$veri->urun_adi}}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -63,7 +63,7 @@
                                                         <div class="col-lg-6">
                                                             <input type="text" class="form-control" id="val-username"
                                                                    name="seri_kodu"
-                                                                   placeholder="Seri kodu varsa giriniz.">
+                                                                   placeholder="Seri kodu varsa giriniz." value="{{$veri->seri_kodu}}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -74,7 +74,7 @@
                                                         <div class="col-lg-6">
                                                     <textarea class="form-control" id="val-suggestions"
                                                               name="urun_aciklama" rows="1"
-                                                              placeholder="Ürün açıklması giriniz.(Opsiyonel)"></textarea>
+                                                              placeholder="Ürün açıklması giriniz.(Opsiyonel)">{{$veri->urun_aciklama}}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -91,7 +91,7 @@
                                                                 @if(!empty($kategoriler) && count($kategoriler)>0)
                                                                     @foreach($kategoriler as $kategori)
                                                                         <option
-                                                                            value="{{$kategori->kategori_ID ?? 'gelmedi'}}">{{$kategori->kategori_adi ?? 'gelmedi'}}</option>
+                                                                            value="{{$kategori->kategori_ID ?? 'gelmedi'}}" @if($kategori->kategori_ID == $veri->kategori_id) selected @endif>{{$kategori->kategori_adi ?? 'gelmedi'}}</option>
                                                                     @endforeach
                                                                 @endif
                                                             </select>
@@ -108,7 +108,7 @@
                                                                 @if(!empty($markalar) && count($markalar)>0)
                                                                     @foreach($markalar as $marka)
                                                                         <option
-                                                                            value="{{$marka->marka_ID ?? 'gelmedi'}}">{{$marka->marka_adi ?? 'gelmedi'}}</option>
+                                                                            value="{{$marka->marka_ID ?? 'gelmedi'}}" @if($marka->marka_ID == $veri->marka_id) selected @endif>{{$marka->marka_adi ?? 'gelmedi'}}</option>
                                                                     @endforeach
                                                                 @endif
                                                             </select>
@@ -126,7 +126,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            {{--<div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Seri Listesi</h4>
                                 </div>
@@ -135,9 +135,8 @@
                                         <table id="example" class="display" style="min-width: 845px">
                                             <thead>
                                             <tr>
-                                                <th>Seri ID</th>
-                                                <th>Seri Kodu</th>
                                                 <th>Ürün Adı</th>
+                                                <th>Seri Kodu</th>
                                                 <th>Ürün Açıklaması</th>
                                                 <th>Kategori</th>
                                                 <th>Marka</th>
@@ -148,17 +147,16 @@
                                             @if(!empty($seriler) && count($seriler)>0)
                                                 @foreach($seriler as $seri)
                                                     <tr>
-                                                        <td> {{$seri->seri_ID ?? 'Gelmedi'}}</td>
                                                         <td> {{$seri->seri_kodu ?? 'Gelmedi'}}</td>
                                                         <td> {{$seri->urun_adi ?? 'Gelmedi'}}</td>
                                                         <td> {{$seri->urun_aciklama ?? 'Gelmedi'}}</td>
                                                         <td> {{$seri->kategori->kategori_adi ?? 'Gelmedi'}}</td>
                                                         <td> {{$seri->marka->marka_adi ?? 'Gelmedi'}}</td>
                                                         <td>
-                                                    <span><a href="{{route('fDuzenleSeri',$seri->seri_ID)}}" class="mr-4" data-toggle="tooltip"
+                                                    <span><a href="#--}}{{--route('fDuzenleSeri',$seri->seri_ID)--}}{{--" class="mr-4" data-toggle="tooltip"
                                                              data-placement="top" title="Edit"><i
                                                                 class="fa fa-pencil color-muted"></i> </a>
-                                                        <a href="{{route('SilSeri',$seri->seri_ID)}}" data-toggle="tooltip" data-placement="top"
+                                                        <a href="#--}}{{--route('SilSeri',$seri->seri_ID)--}}{{--" data-toggle="tooltip" data-placement="top"
                                                            title="Close"><i
                                                                 class="fa fa-close color-red"></i></a></span></td>
                                                     </tr>
@@ -167,9 +165,8 @@
                                             </tbody>
                                             <tfoot>
                                             <tr>
-                                                <th>Seri ID</th>
-                                                <th>Seri Kodu</th>
                                                 <th>Ürün Adı</th>
+                                                <th>Seri Kodu</th>
                                                 <th>Ürün Açıklaması</th>
                                                 <th>Kategori</th>
                                                 <th>Marka</th>
@@ -179,7 +176,7 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -195,7 +192,7 @@
         Scripts
     ***********************************-->
     <!-- Jquery Validation -->
-{{--    <script src="{{asset('backend/vendor/jquery-validation/jquery.validate.min.js')}}"></script>--}}
+    <script src="{{asset('backend/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <!-- Required vendors -->
     {{--
         <script src="{{asset('backend/vendor/global/global.min.js')}}"></script>

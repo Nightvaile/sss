@@ -11,7 +11,7 @@ class stoklar extends Model
     protected $table = 'stoklar';
     protected $primaryKey = 'stok_ID';
     protected $fillable = [
-        'barkod_no',
+        'urun_id',
         'sube_id',
         'stok_sayisi',
     ];

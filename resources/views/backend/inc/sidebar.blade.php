@@ -6,20 +6,20 @@
         <ul class="metismenu" id="menu">
             <li class="nav-label first">Ana Menü</li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-single-04"></i><span class="nav-text">Paneller</span></a>
+                        class="icon icon-layout-25"></i><span class="nav-text">Paneller</span></a>
                 <ul aria-expanded="false">
                     <li><a href="{{route('pIndex')}}">Gösterge paneli</a></li>
                     <li><a href="{{route('pKullanicilar')}}">Kullanıcılar Paneli</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-form"></i><span class="nav-text">Formlar</span></a>
+                        class="icon icon-layout-25"></i><span class="nav-text">Formlar</span></a>
                 <ul aria-expanded="false">
                     {{--<li><a href="{{route('fEkle')}}"> Formu</a></li>
                     <li><a href="{{route('fEkle')}}"> Formu</a></li>--}}
 
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-form"></i><span class="nav-text">Yönetici Formları</span></a>
+                                class="icon icon-single-04"></i><span class="nav-text">Yönetici Formları</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{route('fEkleKullanici')}}">Kullanıcı Formu</a></li>
                             <li><a href="{{route('fEkleRol')}}">Rol Formu</a></li>
@@ -38,7 +38,7 @@
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-form"></i><span class="nav-text">Stok Yönetim Formları</span></a>
+                                class="icon icon-app-store"></i><span class="nav-text">Stok Yönetim Formları</span></a>
                         <ul aria-expanded="false">
                             <li><a href="#{{--route('fEkleStok')--}}">Stok Formu</a></li>
                             <li><a href="#{{--route('fEkleStokHaraket')--}}">Stok Hareketi Formu</a></li>
@@ -47,7 +47,13 @@
                         </ul>
                     </li>
                 </ul>
-
+            </li>
+            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="icon icon-layout-25"></i><span class="nav-text">Stoklar</span></a>
+                <ul aria-expanded="false">
+                    <li><a href="{{--route('pIndex')--}}">Stok</a></li>
+                    <li><a href="{{--route('pKullanicilar')--}}">Stok Haraketi</a></li>
+                </ul>
             </li>
 
         </ul>

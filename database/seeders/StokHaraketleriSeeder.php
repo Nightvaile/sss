@@ -24,7 +24,7 @@ class StokHaraketleriSeeder extends Seeder
                 'total_fiyat' => '',
             ],*/
             [
-                'barkod_no' => '868111000003',
+                'urun_id' => '1',
                 'personel_id' => '3',
                 'gondereci' => '3',
                 'alici' => '1',
@@ -33,7 +33,7 @@ class StokHaraketleriSeeder extends Seeder
                 'total_fiyat' => 10000,
             ],
             [
-                'barkod_no' => '868111000002',
+                'urun_id' => '2',
                 'personel_id' => '3',
                 'gondereci' => '3',
                 'alici' => '2',
