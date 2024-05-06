@@ -147,12 +147,22 @@ class SayfaKontrol extends Controller
     /*-----------------------------------Urun----------------------------------*/
     public function fEkleUrun()
     {
-        $urunler = urunler::all();
-        return view('backend.pages.formEkleUrun', compact('urunler'));
+        $seriler = seriler::all();
+        $renkler = renkler::all();
+        $bedenler = bedenler::all();
+        return view('backend.pages.formEkleUrun', compact('bedenler','seriler','renkler'));
     }
 
-    public function fDuzenleUrun()
+    public function fDuzenleUrun($id)
     {
+        $veri = urunler::where('urun_ID', $id)->first();
+        $seriler = seriler::all();
+        $renkler = renkler::all();
+        $bedenler = bedenler::all();
 
+        if ($veri)
+            return view('backend.pages.formDuzenleUrun', compact('veri', 'seriler','bedenler','renkler'));
+        else
+            return redirect()->route('fEkleUrun');
     }
 }

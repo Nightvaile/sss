@@ -33,8 +33,6 @@
                                         <th>Beden</th>
                                         <th>Renk</th>
                                         <th>Fiyat</th>
-{{--                                        <th>Min Adet Bildirimi</th>--}}
-                                        <th>Adet</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </thead>
@@ -67,17 +65,15 @@
                                         @foreach($urunler as $urun)
                                             <tr>
                                                 <td>{{$urun->barkod_NO ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->seri->urun_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$urun->seri->seri_kodu ?? 'Gelmedi'}}</td>
                                                 <td>{{$urun->seri->kategori->kategori_adi ?? 'Gelmedi'}}</td>
                                                 <td>{{$urun->seri->marka->marka_adi ?? 'Gelmedi'}}</td>
                                                 <td>{{$urun->beden->beden_adi ?? 'Gelmedi'}}</td>
                                                 <td>{{$urun->renk->renk_adi ?? 'Gelmedi'}}</td>
                                                 <td>{{$urun->fiyat ?? 'Gelmedi'}}</td>
-{{--                                                <td>{{$urun->min_adet_bildirimi ?? 'Gelmedi'}}</td>--}}
-                                                <td>{{$urun->adet ?? 'Gelmedi'}}</td>
                                                 <td>
-                                                    <span><a href="#" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
+                                                    <span><a href="{{route('fDuzenleUrun',$urun->urun_ID)}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
+                                                        <a href="{{route('SilUrun',$urun->urun_ID)}}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -91,8 +87,6 @@
                                         <th>Beden</th>
                                         <th>Renk</th>
                                         <th>Fiyat</th>
-{{--                                        <th>Min Adet Bildirimi</th>--}}
-                                        <th>Adet</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </tfoot>

@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->bigInteger('barkod_NO')->unique()->unsigned();
             $table->unsignedBigInteger('seri_id');
             $table->decimal('fiyat', 10, 2);
-            $table->integer('adet');
-            $table->integer('min_adet_bildirimi')->default('10');
+//            $table->integer('adet');
+//            $table->integer('min_adet_bildirimi')->default('10');
             $table->unsignedBigInteger('renk_id');
             $table->unsignedBigInteger('beden_id');
             $table->timestamps();

@@ -14,7 +14,9 @@ return new class extends Migration {
             $table->id('stok_ID');
             $table->unsignedBigInteger('urun_id');
             $table->unsignedBigInteger('sube_id');
-            $table->integer('stok_sayisi');
+            $table->integer('stok');
+            $table->integer('stok_bildirimi')->default('10');
+
             $table->timestamps();
 
             $table->foreign('urun_id')->references('urun_ID')->on('urunler')

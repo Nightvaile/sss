@@ -16,13 +16,6 @@
                         </div>
                         <div class="card-body">
                             <div class="form-validation">
-                                @if(session('success'))
-                                    <div
-                                        class="alert alert-success">{{session('success')}}</div>
-                                @elseif(session('fail'))
-                                    <div
-                                        class="alert alert-danger">{{session('fail')}}</div>
-                                @endif
                                 <form class="form-valide" action="{{route('EkleUrun')}}" method="post">
                                     @csrf
                                     <div class="row">
@@ -32,7 +25,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-username" name="barkod_NO" placeholder="Barkod giriniz.">
+                                                    <input type="text" class="form-control" id="val-username" name="barkod_NO" value="{{$veri->barkod_NO}}" placeholder="Barkod giriniz.">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -40,7 +33,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-username" name="fiyat" placeholder="Fiyat giriniz.">
+                                                    <input type="text" class="form-control" id="val-username" name="fiyat" value="{{$veri->fiyat}}" placeholder="Fiyat giriniz.">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -53,7 +46,8 @@
                                                         @if(!empty($seriler) && count($seriler)>0)
                                                             @foreach($seriler as $seri)
                                                                 <option
-                                                                    value="{{$seri->seri_ID ?? 'gelmedi'}}">{{$seri->seri_kodu ?? 'gelmedi'}}</option>
+                                                                    value="{{$seri->seri_ID ?? 'gelmedi'}}"
+                                                                    @if($seri->seri_ID == $veri->seri_id) selected @endif>{{$seri->seri_kodu ?? 'gelmedi'}}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
@@ -71,7 +65,8 @@
                                                         @if(!empty($bedenler) && count($bedenler)>0)
                                                             @foreach($bedenler as $beden)
                                                                 <option
-                                                                    value="{{$beden->beden_ID ?? 'gelmedi'}}">{{$beden->beden_adi ?? 'gelmedi'}}</option>
+                                                                    value="{{$beden->beden_ID ?? 'gelmedi'}}"
+                                                                    @if($beden->beden_ID == $veri->beden_id) selected @endif>{{$beden->beden_adi ?? 'gelmedi'}}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
@@ -87,7 +82,8 @@
                                                         @if(!empty($renkler) && count($renkler)>0)
                                                             @foreach($renkler as $renk)
                                                                 <option
-                                                                    value="{{$renk->renk_ID ?? 'gelmedi'}}">{{$renk->renk_adi ?? 'gelmedi'}}</option>
+                                                                    value="{{$renk->renk_ID ?? 'gelmedi'}}"
+                                                                    @if($renk->renk_ID == $veri->renk_id) selected @endif>{{$renk->renk_adi ?? 'gelmedi'}}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>

@@ -17,42 +17,42 @@ class StoklarSeeder extends Seeder
             /*[
                 'urun_id' => '',
                 'sube_id' => '',
-                'stok_sayisi' => '',
+                'stok' => '',
             ],*/
             [
                 'urun_id' => '1',
                 'sube_id' => '1',
-                'stok_sayisi' => '20',
+                'stok' => '20',
             ],
             [
                 'urun_id' => '1',
                 'sube_id' => '2',
-                'stok_sayisi' => '40',
+                'stok' => '40',
             ],
             [
                 'urun_id' => '1',
                 'sube_id' => '3',
-                'stok_sayisi' => '40',
+                'stok' => '40',
             ],
             [
                 'urun_id' => '2',
                 'sube_id' => '3',
-                'stok_sayisi' => '200',
+                'stok' => '200',
             ],
             [
                 'urun_id' => '3',
                 'sube_id' => '3',
-                'stok_sayisi' => '300',
+                'stok' => '300',
             ],
             [
                 'urun_id' => '4',
                 'sube_id' => '3',
-                'stok_sayisi' => '400',
+                'stok' => '400',
             ],
             [
                 'urun_id' => '5',
                 'sube_id' => '3',
-                'stok_sayisi' => '123',
+                'stok' => '123',
             ],
         ];
         foreach ($stoklar as $stok) {

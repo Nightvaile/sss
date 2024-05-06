@@ -71,7 +71,7 @@
                                                 <td>{{$kullanici->rol->rol_adi ?? 'Gelmedi'}}</td>
                                                 <td>{{$kullanici->address ?? 'Gelmedi'}}</td>
                                                 <td>
-                                                    <span><a href="" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
+                                                    <span><a href="#{{--route('DuzenleKullanici',$kullanici->id)--}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
                                                         <a href="{{route('SilKullanici',$kullanici->id)}}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
                                             </tr>
                                         @endforeach

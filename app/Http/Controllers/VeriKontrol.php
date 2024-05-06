@@ -20,10 +20,21 @@ class VeriKontrol extends Controller
     public function EkleKullanici(Request $request)
     {
 //        return $request->all(); //bu formdan gelen verileri kontrol etmenizi sağlar
-        $kullanici = $request->all();
+        $kullanici = $request->validate([
+            'tc_no' => 'required|numeric|min:11|max:11',
+            'name' => 'required|alpha:ascii|min:3|max:25',
+            'surname' => 'required|alpha:ascii',
+            'tel_no' => 'required|numeric|min:10|max:11',
+            'address' => 'nullable',
+            'rol_id' => 'required',
+            'email' => 'required|email',
+//            'email_verified_at'=>'',
+//            'password'=>'required|password',
+        ]);
         User::create($kullanici);
         return back()->withSuccess('Başarıyla kaydedildi.');
     }
+
     public function SilKullanici($id)
     {
         $veri = User::whereId($id)->first();
@@ -34,6 +45,7 @@ class VeriKontrol extends Controller
         } else
             return redirect()->route('pKullanicilar')->with('fail', 'Kullanıcı silinemedi!');
     }
+
     /*-----------------------------Rol-------------------------------*/
     public function EkleRol(Request $request)
     {
@@ -48,10 +60,15 @@ class VeriKontrol extends Controller
     /*-----------------------------Sube-------------------------------*/
     public function EkleSube(Request $request)
     {
-        $sube = $request->all();
-        if ($sube['sube_adi'] === null) {
-            return back()->withFail('Kaydedilemedi. Şube adı giriniz.');
-        }
+        $sube = $request->validate([
+            'sube_adi' => 'required|min:3',
+            'adres' => 'required',
+            'yetkili_kisi' => 'required',
+            'sube_tel' => 'required|numeric|min:10|max:11',
+        ]);
+        /* if ($sube['sube_adi'] === null) {
+             return back()->withFail('Kaydedilemedi. Şube adı giriniz.');
+         }*/
         subeler::create($sube);
         return back()->withSuccess('Başarıyla kaydedildi.');
     }
@@ -215,7 +232,8 @@ class VeriKontrol extends Controller
 
         return back()->withSuccess('Seri başarıyla eklendi.');
     }*/
-    public function EkleSeri(Request $request) {
+    public function EkleSeri(Request $request)
+    {
         $seri = $request->validate([
             'urun_adi' => 'required|string|max:255',
             'seri_kodu' => 'nullable|string|max:255|unique:seriler,seri_kodu', // Validate seri_kodu for uniqueness
@@ -280,21 +298,46 @@ class VeriKontrol extends Controller
     /*-----------------------------Urun--------------------------------*/
     public function EkleUrun(Request $request)
     {
-        $urun = $request->all();
-        if ($urun['urun_adi'] === null) {
-            return back()->withFail('Kaydedilemedi. Ürün adı giriniz.');
-        }
+        $urun = $request->validate([
+            'barkod_NO' => 'required|numeric',
+            'seri_id' => 'required|numeric',
+            'fiyat' => 'required|numeric',
+            'renk_id' => 'required|numeric',
+            'beden_id' => 'required|numeric',
+        ]);
         urunler::create($urun);
         return back()->withSuccess('Başarıyla kaydedildi.');
     }
 
-    public function DuzenleUrun(Request $request)
+    public function DuzenleUrun(Request $request, $id)
     {
+        $urun = $request->validate([
+            'barkod_NO' => 'required|numeric',
+            'seri_id' => 'required|numeric',
+            'fiyat' => 'required|numeric',
+            'renk_id' => 'required|numeric',
+            'beden_id' => 'required|numeric',
+        ]);
 
+        urunler::where('urun_ID', $id)->update([
+            'barkod_NO' => $request->barkod_NO,
+            'seri_id' => $request->seri_id,
+            'fiyat' => $request->fiyat,
+            'renk_id' => $request->renk_id,
+            'beden_id' => $request->beden_id,
+        ]);
+        return redirect()->route('fEkleUrun')->with('success', 'Urun güncellendi.');
     }
 
-    public function SilUrun(Request $request)
+    public function SilUrun($id)
     {
+        $veri = urunler::where('urun_ID', $id)->first();
+        /*        dd($veri);*/
 
+        if ($veri) {
+            urunler::where('urun_ID', $id)->delete();
+            return redirect()->route('pIndex')->with('success', 'Ürün silindi!');
+        } else
+            return redirect()->route('pIndex')->with('fail', 'Ürün silinemedi!');
     }
 }
