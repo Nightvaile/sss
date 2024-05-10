@@ -17,30 +17,45 @@ class StokHaraketleriSeeder extends Seeder
             /*[
                 'barkod_no' => '',
                 'personel_id' => '',
-                'gondereci' => '',
-                'alici' => '',
+                'tedarikci' => '',
+                'teslim_alan' => '',
                 'stok_adeti' => '',
                 'birim_fiyat' => '',
                 'total_fiyat' => '',
             ],*/
             [
                 'urun_id' => '1',
-                'personel_id' => '3',
-                'gondereci' => '3',
-                'alici' => '1',
+//                'haraket_tipi'=>'1',
+                'teslim_alan' => '3',
+                'tedarikci' => '3',
+                'sube_id'=>'1',
                 'stok_adeti' => '100',
                 'birim_fiyat' => 100,
                 'total_fiyat' => 10000,
+                'not'=>'sonbahar koleksiyonu',
             ],
             [
                 'urun_id' => '2',
-                'personel_id' => '3',
-                'gondereci' => '3',
-                'alici' => '2',
+                'teslim_alan' => '2',
+                'tedarikci' => '2',
+                'sube_id'=>'1',
+                'haraket_tipi'=>'Alış',
                 'stok_adeti' => '200',
                 'birim_fiyat' => 100,
                 'total_fiyat' => 20000,
+                'not'=>'sonbahar koleksiyonu',
             ],
+            [
+                'urun_id'=>'1',
+                'teslim_alan'=>'1',
+                'tedarikci'=>'1',
+                'sube_id'=>'1',
+//                'haraket_tipi'=>'Satış',
+                'stok_adeti'=>'200',
+                'birim_fiyat'=>100,
+                'total_fiyat'=>20000,
+                'not'=>'sonbahar koleksiyonu',
+            ]
         ];
         foreach ($haraketler as $haraket) {
             stok_haraketleri::create($haraket);

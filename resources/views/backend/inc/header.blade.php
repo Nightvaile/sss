@@ -56,7 +56,8 @@
                                     <span class="success"><i class="ti-user"></i></span>
                                     <div class="media-body">
                                         <a href="#">
-                                            <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
+                                            <p><strong>Martin</strong> has added a <strong>customer</strong>
+                                                Successfully
                                             </p>
                                         </a>
                                     </div>
@@ -94,7 +95,8 @@
                                     <span class="success"><i class="ti-image"></i></span>
                                     <div class="media-body">
                                         <a href="#">
-                                            <p><strong> James.</strong> has added a<strong>customer</strong> Successfully
+                                            <p><strong> James.</strong> has added a<strong>customer</strong>
+                                                Successfully
                                             </p>
                                         </a>
                                     </div>
@@ -110,19 +112,31 @@
                             <i class="mdi mdi-account"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="{{asset('backend/app-profile.html')}}" class="dropdown-item">
-                                <i class="icon-user"></i>
-                                <span class="ml-2">Profile </span>
-                            </a>
-                            <a href="{{asset('backend/email-inbox.html')}}" class="dropdown-item">
+                            {{--                            <a href="{{ __('profile') }}" class="dropdown-item">
+                                                            <i class="icon-user"></i>
+                                                            <span class="ml-2">Profile </span>
+                                                        </a>--}}
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Profile') }}
+                            </x-dropdown-link>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <x-dropdown-link :href="route('logout')"
+                                                 onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                            {{--<a href="{{asset('backend/email-inbox.html')}}" class="dropdown-item">
                                 <i class="icon-envelope-open"></i>
                                 <span class="ml-2">Inbox </span>
-                            </a>
-                            <a href="{{asset('backend/page-login.html')}}" class="dropdown-item">
+                            </a>--}}
+                            {{--<a href="{{route('logout')}}" class="dropdown-item">
                                 <i class="icon-key"></i>
                                 <span class="ml-2">Logout </span>
-                            </a>
+                            </a>--}}
                         </div>
+
                     </li>
                 </ul>
             </div>

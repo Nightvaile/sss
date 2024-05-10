@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('sube_adi');
             $table->string('adres');
             $table->unsignedBigInteger('yetkili_kisi');
-            $table->string('sube_tel', 15);
+            $table->string('sube_tel', 11);
             $table->timestamps();
 
             $table->foreign('yetkili_kisi')->references('id')->on('users')

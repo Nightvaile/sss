@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SubelerSeeder::class,
             UrunlerSeeder::class,
+            TedarikciSeeder::class,
             StoklarSeeder::class,
             StokHaraketleriSeeder::class,
         ]);

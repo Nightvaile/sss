@@ -12,12 +12,13 @@ class stok_haraketleri extends Model
     protected $primaryKey = 'stok_haraketi_ID';
     protected $fillable = [
         'urun_id',
-        'personel_id',
-        'gondereci',
-        'alici',
+        'teslim_alan',
+        'tedarikci',
+        'sube_id',
         'haraket_tipi',
         'stok_adeti',
         'birim_fiyat',
         'total_fiyat',
+        'not',
     ];
 }
