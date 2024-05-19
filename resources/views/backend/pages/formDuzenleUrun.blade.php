@@ -12,11 +12,11 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Urun Ekle</h4>
+                            <h4 class="card-title">Urun Düzenle</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-validation">
-                                <form class="form-valide" action="{{route('EkleUrun')}}" method="post">
+                                <form class="form-valide" action="{{route('DuzenleUrun',$veri->urun_ID)}}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-xl-6">

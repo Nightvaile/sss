@@ -8,9 +8,12 @@ use App\Models\markalar;
 use App\Models\renkler;
 use App\Models\roller;
 use App\Models\seriler;
+use App\Models\stok_haraketleri;
+use App\Models\stoklar;
 use App\Models\subeler;
 use App\Models\urunler;
 use App\Models\User;
+use App\Models\tedarikciler;
 use Illuminate\Http\Request;
 
 class SayfaKontrol extends Controller
@@ -18,7 +21,7 @@ class SayfaKontrol extends Controller
     /*--------------------------------------------------PANELLER------------------------------------------------*/
     public function pIndex()
     {
-        $urunler = urunler::with('beden','renk','seri')->get();
+        $urunler = urunler::with('beden', 'renk', 'seri')->get();
         return view('backend.pages.panelIndex', compact('urunler'));
     }
 
@@ -28,6 +31,20 @@ class SayfaKontrol extends Controller
 
 //        dd($kullanicilar);
         return view('backend.pages.panelKullanicilar', compact('kullanicilar'));
+    }
+
+    /*------------------------------------Stok--------------------------------------*/
+    public function pStok()
+    {
+        $stoklar = stoklar::with('sube','urun')->get();
+        return view('backend.pages.panelStoklar',compact(['stoklar']));
+    }
+
+    /*------------------------------------Stok Haraketi--------------------------------------*/
+    public function pStokHaraket()
+    {
+        $stokhar = stok_haraketleri::with('sube','urun','kullanici','tedarikci')->get();
+        return view('backend.pages.panelStokHaraketi',compact(['stokhar']));
     }
 
     /*-------------------------------------------FORMLAR------------------------------------------------*/
@@ -67,7 +84,7 @@ class SayfaKontrol extends Controller
         if ($veri)
             return view('backend.pages.formDuzenleBeden', compact('veri'));
         else
-            return redirect()->route('fEkleBeden')->with('fail','Geçersiz ID.');
+            return redirect()->route('fEkleBeden')->with('fail', 'Geçersiz ID.');
     }
 
     /*------------------------------------Renk------------------------------------*/
@@ -83,7 +100,7 @@ class SayfaKontrol extends Controller
         if ($veri)
             return view('backend.pages.formDuzenleRenk', compact('veri'));
         else
-            return redirect()->route('fEkleRenk')->with('fail','Geçersiz ID.');
+            return redirect()->route('fEkleRenk')->with('fail', 'Geçersiz ID.');
     }
 
     /*-------------------------------------Marka------------------------------------*/
@@ -99,7 +116,7 @@ class SayfaKontrol extends Controller
         if ($veri)
             return view('backend.pages.formDuzenleMarka', compact('veri'));
         else
-            return redirect()->route('fEkleMarka')->with('fail','Geçersiz ID.');
+            return redirect()->route('fEkleMarka')->with('fail', 'Geçersiz ID.');
     }
 
     /*-------------------------------Kategori--------------------------------------*/
@@ -127,7 +144,7 @@ class SayfaKontrol extends Controller
         $kategoriler = kategoriler::all();
         $markalar = markalar::all();
         $seriler = seriler::all();
-        return view('backend.pages.formEkleSeri', compact('seriler','kategoriler','markalar'));
+        return view('backend.pages.formEkleSeri', compact('seriler', 'kategoriler', 'markalar'));
     }
 
     public function fDuzenleSeri($id)
@@ -139,7 +156,7 @@ class SayfaKontrol extends Controller
         /*        dd($veri);*/
 
         if ($veri)
-            return view('backend.pages.formDuzenleSeri', compact('veri', 'seriler','kategoriler','markalar'));
+            return view('backend.pages.formDuzenleSeri', compact('veri', 'seriler', 'kategoriler', 'markalar'));
         else
             return redirect()->route('fEkleSeri');
     }
@@ -150,7 +167,7 @@ class SayfaKontrol extends Controller
         $seriler = seriler::all();
         $renkler = renkler::all();
         $bedenler = bedenler::all();
-        return view('backend.pages.formEkleUrun', compact('bedenler','seriler','renkler'));
+        return view('backend.pages.formEkleUrun', compact('bedenler', 'seriler', 'renkler'));
     }
 
     public function fDuzenleUrun($id)
@@ -161,8 +178,26 @@ class SayfaKontrol extends Controller
         $bedenler = bedenler::all();
 
         if ($veri)
-            return view('backend.pages.formDuzenleUrun', compact('veri', 'seriler','bedenler','renkler'));
+            return view('backend.pages.formDuzenleUrun', compact('veri', 'seriler', 'bedenler', 'renkler'));
         else
             return redirect()->route('fEkleUrun');
+    }
+
+    /*------------------------------------Stok--------------------------------------*/
+    public function fEkleStok()
+    {
+        $subeler = subeler::all();
+        $urunler = urunler::all();
+        return view('backend.pages.formEkleStok',compact(['subeler','urunler']));
+    }
+
+    /*------------------------------------Stok Haraketi--------------------------------------*/
+    public function fEkleStokHaraket()
+    {
+        $subeler = subeler::all();
+        $urunler = urunler::all();
+        $teslim_alanlar = User::all();
+        $tedarikciler = tedarikciler::all();
+        return view('backend.pages.formStokHaraket',compact(['subeler','urunler','teslim_alanlar','tedarikciler']));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\tedarikci;
+use App\Models\tedarikciler;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -41,7 +41,7 @@ class TedarikciSeeder extends Seeder
         ];
 
         foreach ($tedarikciler as $tedarikci) {
-            tedarikci::create($tedarikci);
+            tedarikciler::create($tedarikci);
         }
     }
 }

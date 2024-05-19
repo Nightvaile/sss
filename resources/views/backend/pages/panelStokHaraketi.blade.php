@@ -11,7 +11,7 @@
     <link href="{{asset('backend')}}/css/style.css" rel="stylesheet">
 @endsection
 @section('content')
-{{--    @dd($urunler)--}}
+{{--    @dd($stokharaketleri)--}}
     <div class="content-body">
         <div class="container-fluid">
             <!-- row -->
@@ -19,19 +19,23 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Ürünler Tablosu</h4>
+                            <h4 class="card-title">Stok Haraketi Tablosu</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="example" class="display" style="min-width: 845px">
                                     <thead>
                                     <tr>
-                                        <th>Barcode</th>
-                                        <th>Seri</th>
-                                        <th>Kategori</th>
-                                        <th>Marka</th>
-                                        <th>Beden</th>
-                                        <th>Renk</th>
+                                        <th>ID</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Teslim Alan</th>
+                                        <th>Tedarikçi</th>
+                                        <th>Şube Adı</th>
+                                        <th>İşlem Tipi</th>
+                                        <th>Stok</th>
+                                        <th>Birim Fiyatı</th>
+                                        <th>Total Fiyatı</th>
+                                        <th>Not</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </thead>
@@ -60,30 +64,38 @@
                                             </div>
                                         </td>
                                     </tr>--}}
-                                    @if(!empty($urunler) && count($urunler)>0)
-                                        @foreach($urunler as $urun)
+                                    @if(!empty($stokhar) && count($stokhar)>0)
+                                        @foreach($stokhar as $stokharaketi)
                                             <tr>
-                                                <td>{{$urun->barkod_NO ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->seri->seri_kodu ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->seri->kategori->kategori_adi ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->seri->marka->marka_adi ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->beden->beden_adi ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->renk->renk_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->stok_haraketi_ID ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->urun->barkod_NO ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->kullanici->name ?? 'Gelmedi'}} {{$stokharaketi->kullanici->surname ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->tedarikci->firma_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->sube->sube_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->haraket_tipi ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->stok_adeti ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->birim_fiyat ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->total_fiyat ?? 'Gelmedi'}}</td>
+                                                <td>{{$stokharaketi->not ?? 'Gelmedi'}}</td>
                                                 <td>
-                                                    <span><a href="{{route('fDuzenleUrun',$urun->urun_ID)}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
-                                                        <a href="{{route('SilUrun',$urun->urun_ID)}}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
+                                                    <span><a href="{{--route('fDuzenlestokharaketi',$stokharaketi->stokharaketi_ID)--}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
+                                                        <a href="{{--route('Silstokharaketi',$stokharaketi->stokharaketi_ID)--}}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
                                             </tr>
                                         @endforeach
                                     @endif
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Barcode</th>
-                                        <th>Seri</th>
-                                        <th>Kategori</th>
-                                        <th>Marka</th>
-                                        <th>Beden</th>
-                                        <th>Renk</th>
+                                        <th>ID</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Teslim Alan</th>
+                                        <th>Tedarikçi</th>
+                                        <th>Şube Adı</th>
+                                        <th>İşlem Tipi</th>
+                                        <th>Stok</th>
+                                        <th>Birim Fiyatı</th>
+                                        <th>Total Fiyatı</th>
+                                        <th>Not</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </tfoot>

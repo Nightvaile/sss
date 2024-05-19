@@ -14,10 +14,9 @@ return new class extends Migration {
             $table->id('stok_haraketi_ID');
             $table->unsignedBigInteger('urun_id');
             $table->unsignedBigInteger('teslim_alan');
-            $table->unsignedBigInteger('tedarikci');
-//            $table->unsignedBigInteger('teslim_alan');
+            $table->unsignedBigInteger('tedarikci_id');
             $table->unsignedBigInteger('sube_id');
-            $table->enum('haraket_tipi', ['Transfer', 'Alış', 'Satış', 'İade', 'Değişim'])->default('Transfer');
+            $table->enum('haraket_tipi', ['Alış','Transfer', 'Satış', 'İade', 'Değişim'])->default('Alış');
             $table->integer('stok_adeti');
             $table->decimal('birim_fiyat', 10, 2)->nullable();
             $table->decimal('total_fiyat', 20, 2)->nullable();
@@ -28,10 +27,8 @@ return new class extends Migration {
                 ->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('teslim_alan')->references('id')->on('users')
                 ->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('tedarikci')->references('tedarikci_ID')->on('tedarikciler')
+            $table->foreign('tedarikci_id')->references('tedarikci_ID')->on('tedarikciler')
                 ->cascadeOnUpdate()->cascadeOnDelete();
-//            $table->foreign('teslim_alan')->references('sube_ID')->on('subeler')
-//                ->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('sube_id')->references('sube_ID')->on('subeler')
                 ->cascadeOnUpdate()->cascadeOnDelete();
 

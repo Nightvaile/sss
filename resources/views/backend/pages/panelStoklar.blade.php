@@ -11,7 +11,7 @@
     <link href="{{asset('backend')}}/css/style.css" rel="stylesheet">
 @endsection
 @section('content')
-{{--    @dd($urunler)--}}
+{{--    @dd($stokler)--}}
     <div class="content-body">
         <div class="container-fluid">
             <!-- row -->
@@ -19,19 +19,18 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Ürünler Tablosu</h4>
+                            <h4 class="card-title">Stok Tablosu</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="example" class="display" style="min-width: 845px">
                                     <thead>
                                     <tr>
-                                        <th>Barcode</th>
-                                        <th>Seri</th>
-                                        <th>Kategori</th>
-                                        <th>Marka</th>
-                                        <th>Beden</th>
-                                        <th>Renk</th>
+                                        <th>Stok ID</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Şube Adı</th>
+                                        <th>Satış fiyatı</th>
+                                        <th>Stok</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </thead>
@@ -60,30 +59,28 @@
                                             </div>
                                         </td>
                                     </tr>--}}
-                                    @if(!empty($urunler) && count($urunler)>0)
-                                        @foreach($urunler as $urun)
+                                    @if(!empty($stoklar) && count($stoklar)>0)
+                                        @foreach($stoklar as $stok)
                                             <tr>
-                                                <td>{{$urun->barkod_NO ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->seri->seri_kodu ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->seri->kategori->kategori_adi ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->seri->marka->marka_adi ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->beden->beden_adi ?? 'Gelmedi'}}</td>
-                                                <td>{{$urun->renk->renk_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$stok->stok_ID ?? 'Gelmedi'}}</td>
+                                                <td>{{$stok->urun->barkod_NO ?? 'Gelmedi'}}</td>
+                                                <td>{{$stok->sube->sube_adi ?? 'Gelmedi'}}</td>
+                                                <td>{{$stok->satis_fiyati ?? 'Gelmedi'}}</td>
+                                                <td>{{$stok->stok ?? 'Gelmedi'}}</td>
                                                 <td>
-                                                    <span><a href="{{route('fDuzenleUrun',$urun->urun_ID)}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
-                                                        <a href="{{route('SilUrun',$urun->urun_ID)}}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
+                                                    <span><a href="{{--route('fDuzenlestok',$stok->stok_ID)--}}" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
+                                                        <a href="{{--route('Silstok',$stok->stok_ID)--}}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-red"></i></a></span></td>
                                             </tr>
                                         @endforeach
                                     @endif
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Barcode</th>
-                                        <th>Seri</th>
-                                        <th>Kategori</th>
-                                        <th>Marka</th>
-                                        <th>Beden</th>
-                                        <th>Renk</th>
+                                        <th>Stok ID</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Şube Adı</th>
+                                        <th>Satış fiyatı</th>
+                                        <th>Stok</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </tfoot>

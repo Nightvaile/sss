@@ -7,6 +7,8 @@ use App\Models\kategoriler;
 use App\Models\renkler;
 use App\Models\roller;
 use App\Models\seriler;
+use App\Models\stok_haraketleri;
+use App\Models\stoklar;
 use App\Models\subeler;
 use App\Models\markalar;
 use App\Models\urunler;
@@ -139,7 +141,7 @@ class VeriKontrol extends Controller
         $marka = $request->all();
 
         if ($marka['marka_adi'] === null) {
-            return back()->withFail('Kaydedilemedi. marka adı giriniz.');
+            return back()->withFail('Kaydedilemedi. Marka adı giriniz.');
         }
         markalar::create($marka);
         return back()->withSuccess('Başarıyla kaydedildi.');
@@ -299,9 +301,8 @@ class VeriKontrol extends Controller
     public function EkleUrun(Request $request)
     {
         $urun = $request->validate([
-            'barkod_NO' => 'required|numeric',
+            'barkod_NO' => 'required|numeric|unique:urunler',
             'seri_id' => 'required|numeric',
-            'fiyat' => 'required|numeric',
             'renk_id' => 'required|numeric',
             'beden_id' => 'required|numeric',
         ]);
@@ -312,9 +313,8 @@ class VeriKontrol extends Controller
     public function DuzenleUrun(Request $request, $id)
     {
         $urun = $request->validate([
-            'barkod_NO' => 'required|numeric',
+            'barkod_NO' => 'required|numeric|unique:urunler',
             'seri_id' => 'required|numeric',
-            'fiyat' => 'required|numeric',
             'renk_id' => 'required|numeric',
             'beden_id' => 'required|numeric',
         ]);
@@ -322,11 +322,10 @@ class VeriKontrol extends Controller
         urunler::where('urun_ID', $id)->update([
             'barkod_NO' => $request->barkod_NO,
             'seri_id' => $request->seri_id,
-            'fiyat' => $request->fiyat,
             'renk_id' => $request->renk_id,
             'beden_id' => $request->beden_id,
         ]);
-        return redirect()->route('fEkleUrun')->with('success', 'Urun güncellendi.');
+        return redirect()->route('pIndex')->with('success', 'Urun güncellendi.');
     }
 
     public function SilUrun($id)
@@ -339,5 +338,38 @@ class VeriKontrol extends Controller
             return redirect()->route('pIndex')->with('success', 'Ürün silindi!');
         } else
             return redirect()->route('pIndex')->with('fail', 'Ürün silinemedi!');
+    }
+
+    /*------------------------------------Stok--------------------------------------*/
+    public function EkleStok(Request $request)
+    {
+        $veri = $request->validate([
+            'urun_id' => 'required|numeric',
+            'sube_id' => 'required|numeric',
+            'satis_fiyati' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'stok_bildirimi' => 'numeric',
+        ]);
+        stoklar::create($veri);
+        return back()->withSuccess('Başarıyla kaydedildi.');
+
+    }
+
+    /*------------------------------------Stok Haraketi--------------------------------------*/
+    public function EkleStokHaraket(Request $request)
+    {
+        $veri = $request->validate([
+            'urun_id' => 'required|numeric',
+            'teslim_alan' => 'required|numeric',
+            'tedarikci' => 'required|numeric',
+            'sube_id' => 'required|numeric',
+            'haraket_tipi' => 'required|string',
+            'stok_adeti' => 'required|numeric',
+            'birim_fiyat' => 'required|numeric',
+            'total_fiyat' => 'numeric',
+            'not' => 'nullable',
+        ]);
+        stok_haraketleri::create($veri);
+        return back()->withSuccess('Başarıyla kaydedildi.');
     }
 }

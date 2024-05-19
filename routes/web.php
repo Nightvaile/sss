@@ -34,6 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/kullanicilar',[SayfaKontrol::class,'pKullanicilar'])->name('pKullanicilar');
     Route::get('/kullanici-sil/{id}',[VeriKontrol::class,'SilKullanici'])->name('SilKullanici');
 
+    /*-------------------------Stoklar-----------------------------*/
+    Route::get('/stoklar',[SayfaKontrol::class,'pStok'])->name('pStok');
+
+    /*-------------------------Stoklar Haraketleri-----------------------------*/
+    Route::get('/stok-haraketleri',[SayfaKontrol::class,'pStokHaraket'])->name('pStokHaraket');
+
     /*------------------------URUN FORMLARI---------------------------*/
     /*------------------------------Bedenler--------------------------*/
     Route::get('/beden-ekle',[SayfaKontrol::class,'fEkleBeden'])->name('fEkleBeden');
@@ -90,7 +96,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/rol-ekle',[SayfaKontrol::class,'fEkleRol'])->name('fEkleRol');
     Route::post('/rol-ekle',[VeriKontrol::class,'EkleRol'])->name('EkleRol');
 
+    /*--------------------------------------STOK FORMLARI-----------------------------------------*/
+    /*-------------------------Stoklar-----------------------------*/
+    Route::get('/stok-ekle',[SayfaKontrol::class,'fEkleStok'])->name('fEkleStok');
+    Route::post('/stok-ekle',[VeriKontrol::class,'EkleStok'])->name('EkleStok');
 
+    /*------------------------------Stok Haraket--------------------------------*/
+    Route::get('/stok-haraket-ekle',[SayfaKontrol::class,'fEkleStokHaraket'])->name('fEkleStokHaraket');
+    Route::post('/stok-haraket-ekle',[VeriKontrol::class,'EkleStokHaraket'])->name('EkleStokHaraket');
 });
 
 require __DIR__.'/auth.php';

@@ -17,7 +17,7 @@ class StokHaraketleriSeeder extends Seeder
             /*[
                 'barkod_no' => '',
                 'personel_id' => '',
-                'tedarikci' => '',
+                'tedarikci_id' => '',
                 'teslim_alan' => '',
                 'stok_adeti' => '',
                 'birim_fiyat' => '',
@@ -27,7 +27,7 @@ class StokHaraketleriSeeder extends Seeder
                 'urun_id' => '1',
 //                'haraket_tipi'=>'1',
                 'teslim_alan' => '3',
-                'tedarikci' => '3',
+                'tedarikci_id' => '3',
                 'sube_id'=>'1',
                 'stok_adeti' => '100',
                 'birim_fiyat' => 100,
@@ -37,7 +37,7 @@ class StokHaraketleriSeeder extends Seeder
             [
                 'urun_id' => '2',
                 'teslim_alan' => '2',
-                'tedarikci' => '2',
+                'tedarikci_id' => '2',
                 'sube_id'=>'1',
                 'haraket_tipi'=>'Alış',
                 'stok_adeti' => '200',
@@ -48,7 +48,7 @@ class StokHaraketleriSeeder extends Seeder
             [
                 'urun_id'=>'1',
                 'teslim_alan'=>'1',
-                'tedarikci'=>'1',
+                'tedarikci_id'=>'1',
                 'sube_id'=>'1',
 //                'haraket_tipi'=>'Satış',
                 'stok_adeti'=>'200',
